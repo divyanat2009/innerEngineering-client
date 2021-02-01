@@ -32,8 +32,8 @@ class DailyForm extends Component{
                                 </div>
                                 <label htmlFor="type1">Type of Care</label>
                                 <select id="type1">
-                                    <option value="Food">Food</option>
-                                    <option value="physical">Physical</option>
+                                    <option value="Food">Energy-wise(food I ate)</option>
+                                    <option value="physical">Physical(exercise/meditation)</option>
                                     <option value="emotional">Emotional Wellbeing</option>
                                     <option value="spiritual">Spiritual Growth</option>
                                 </select>
@@ -56,8 +56,8 @@ class DailyForm extends Component{
                                 </div>
                                 <label htmlFor="type2">Type of Care</label>
                                 <select id="type2">
-                                    <option value="food">Food</option>
-                                    <option value="physical">Physical</option>
+                                    <option value="food">Energy-wise(food I ate)</option>
+                                    <option value="physical">Physical(exercise/meditation)</option>
                                     <option value="emotional">Emotional Wellbeing</option>
                                     <option value="spiritual">Spiritual Growth</option>
                                 </select>

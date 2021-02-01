@@ -117,7 +117,7 @@ handleSubmit=(e)=>{
                             </select>
                         </fieldset>
                         <fieldset>
-                            <legend>Food Care</legend>
+                            <legend>Energy-wise(food I eat)</legend>
                             <select id="food"
                             onChange={e => this.updateCare(e.target.value, e.target.id)}>
                                 <option value="0">no interest</option>
@@ -132,7 +132,7 @@ handleSubmit=(e)=>{
                             </select>
                         </fieldset>
                         <fieldset>
-                            <legend>Physical Care</legend>
+                            <legend>Physical Care(exercise/meditation)</legend>
                             <select id="body"
                             onChange={e => this.updateCare(e.target.value, e.target.id)}>
                              <option value="0">no interest</option>
