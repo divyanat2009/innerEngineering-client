@@ -8,7 +8,7 @@ class DailyForm extends Component{
                 <header>
                     <h1>Today's Inner Engineering and Gratitude</h1>
                 </header>
-                <form class="daily-form">
+                <form className="daily-form">
                     <div className="date-option">
                         <label htmlFor="date" >Today</label>
                         <select id="date">
@@ -25,7 +25,7 @@ class DailyForm extends Component{
                     <div className="activity-input-area">
                         <fieldset>
                         <legend>Today's Wellbeing</legend>
-                            <div class="activity-input">
+                            <div className="activity-input">
                                 <div className="content-input">
                                     <label>Activity</label>
                                     <input placeholder="meditation" type="text" name="activity-1" id="activity-1"/>
@@ -33,7 +33,7 @@ class DailyForm extends Component{
                                 <label htmlFor="type1">Type of Care</label>
                                 <select id="type1">
                                     <option value="Food">Food</option>
-                                    <option value="physical">Body</option>
+                                    <option value="physical">Physical</option>
                                     <option value="emotional">Emotional Wellbeing</option>
                                     <option value="spiritual">Spiritual Growth</option>
                                 </select>
@@ -49,7 +49,7 @@ class DailyForm extends Component{
                         </fieldset>                  
                     <fieldset>
                        <legend>Today's Well-Being</legend>
-                            <div class="activity-input">
+                            <div className="activity-input">
                                 <div className="content-input">
                                     <label>Activity</label>
                                     <input placeholder="a morning walk" type="text" name="activity-2" id="activity-2"/>
@@ -57,7 +57,7 @@ class DailyForm extends Component{
                                 <label htmlFor="type2">Type of Care</label>
                                 <select id="type2">
                                     <option value="food">Food</option>
-                                    <option value="physical">Body</option>
+                                    <option value="physical">Physical</option>
                                     <option value="emotional">Emotional Wellbeing</option>
                                     <option value="spiritual">Spiritual Growth</option>
                                 </select>
@@ -73,7 +73,7 @@ class DailyForm extends Component{
                     </fieldset>
                     <fieldset>
                         <legend>Today's Well-Being</legend>
-                            <div class="activity-input">
+                            <div className="activity-input">
                              <div className="content-input">
                                 <label>Activity</label>
                                 <input placeholder="morning yoga practice" type="text" name="activity-3" id="activity-3"/>
@@ -81,7 +81,7 @@ class DailyForm extends Component{
                                 <label htmlFor="type3">Type of Care</label>
                                 <select id="type3">
                                     <option value="Food">Food</option>
-                                    <option value="physical">Body</option>
+                                    <option value="physical">Physical</option>
                                     <option value="emotional">Emotional Wellbeing</option>
                                     <option value="spiritual">Spiritual Growth</option>
                                 </select>
@@ -97,7 +97,7 @@ class DailyForm extends Component{
                     </fieldset>  
                 </div>  
                 <fieldset className="mood-input">
-                    <legend>How do I today?</legend>
+                    <legend>How do I feel today?</legend>
                     <label htmlFor="mood">My Mood</label>
                     <select id="mood">
                         <option value="1">1</option>

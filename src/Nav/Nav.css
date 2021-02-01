@@ -1,0 +1,14 @@
+nav ul{
+    list-style-type: none;
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    padding-inline-start: 0px;
+}
+
+.nav{
+    border-bottom: #40004b 1px solid;
+}
+
+@media only screen and (min-width:960px){
+}

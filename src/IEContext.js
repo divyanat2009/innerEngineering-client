@@ -4,7 +4,12 @@ import React from 'react';
      selfCare:[],
      gratitude:[],
      goals:{},
-     quotes:[]
+     quotes:[],
+     addSelfCare:()=>{},
+     addGratitude:()=>{},
+     addEnergy:()=>{},
+     addMood:()=>{},
+     updateGoals:()=>{}
  })
 
 export default IEContext; 

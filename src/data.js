@@ -1,17 +1,17 @@
-export default {
+module.exports= {
     selfcare:[
         {
             "id":"1",
             "user_id":"1",
             "content":"10 minutes of breathing exercise",
-            "type":"body",
+            "type":"physical",
             "rating":"5",
             "date":"January 5th 2021"           
         },
         {
             "id":"2",
             "user_id":"1",
-            "content":"Read a book",
+            "content":"Read a book about Malala Yousafzai",
             "type":"emotional",
             "rating":"5",
             "date":"January 3rd 2021"           
@@ -27,8 +27,8 @@ export default {
         {
             "id":"4",
             "user_id":"1",
-            "content":"Practiced yoga",
-            "type":"physical",
+            "content":"Ate a healthy breakfast bowl",
+            "type":"food",
             "rating":"5",
             "date":"January 1st 2021"           
         }
@@ -44,7 +44,7 @@ export default {
         {
             "id":"2",
             "user_id":"1",
-            "content":"A catch up phone call with Deepa",
+            "content":"A catch up phone call with Deepa and mom",
             "date":"January 7th 2021"           
         },
         {
@@ -99,5 +99,43 @@ export default {
             "author": "Pema Chodron",
         },              
     ],
+    mood:[{
+        "mood_id":"1",
+        "user_id":"1",
+        "mood_level":"4",
+        "date":"January 3rd 2021",   
+    },
+    {
+        "mood_id":"2",
+        "user_id":"1",
+        "mood_level":"5",
+        "date":"January 3rd 2021",   
+    },
+    {
+        "mood_id":"3",
+        "user_id":"1",
+        "mood_level":"5",
+        "date":"January 3rd 2021",   
+    },
+   ],
+energy:[{
+    "energy_id":"1",
+    "user_id":"1",
+    "energy_level":"4",
+    "date":"Febuary 3rd 2021",   
+    },
+    {
+    "energy_id":"2",
+    "user_id":"1",
+    "energy_level":"5",
+    "date":"Febuary 3rd 2021",   
+    },
+    {
+    "energy_id":"3",
+    "user_id":"1",
+    "energy_level":"5",
+    "date":"Febuary 3rd 2021",   
+    },
+],
 
 }

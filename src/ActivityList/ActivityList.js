@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import IEContext from '../IEContext';
-import Link from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './ActivityList.css';
 
 class ActivityList extends Component {

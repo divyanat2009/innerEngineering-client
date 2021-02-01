@@ -1,0 +1,9 @@
+ul.result-list {
+    padding-inline-start: 0px;
+    margin:auto;
+    width:90%;
+}
+
+.result-list li{
+  margin:10px 0;
+}

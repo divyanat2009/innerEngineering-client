@@ -1,0 +1,13 @@
+.filter-sort-control{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+}
+
+.filter-sort-control > div{
+  margin-bottom:10px;
+}
+
+.filter-sort-control input{
+    border:1px solid #000;
+}
