@@ -1,6 +1,8 @@
 import React, { Component } from 'react'; 
 import IEContext from '../IEContext';
 import ActivityList from '../ActivityList/ActivityList';
+import GoalList from '../GoalList/GoalList';
+
 
 class MostRecent extends Component{
     static contextType = IEContext;
@@ -13,15 +15,16 @@ class MostRecent extends Component{
                 </header>
                 <main>
                     <ActivityList
-                       typePage={'activity'}
-                       list = {this.context.selfcare}
-                       listHeading = {'Your Most Recent Well-Being'}
+                       typePage={'selfcares'}
+                       list = {this.context.selfcares}
+                       listHeading = {'Your Most Recent Well-Being Activities'}
                        random = {false} />
                     <ActivityList
-                       typePage={'gratitude'}
-                       list = {this.context.gratitude}
-                       listHeading = {`Some of Your Past Gratitudes`} 
+                       typePage={'gratitudes'}
+                       list = {this.context.gratitudes}
+                       listHeading = {`Your Most Recent Gratitudes`} 
                        random = {true}/>
+                     <GoalList/>
                 </main>
             </section>
         );
