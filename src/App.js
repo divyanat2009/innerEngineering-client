@@ -240,7 +240,6 @@ componentDidMount(){
       gratitudes:this.state.gratitudes,
       goals:this.state.goals,
       moods:this.state.moods,
-      inspiration:this.state.inspiration,
       quotes:this.state.quotes,
       addSelfCare:this.addSelfCare,
       addGratitude:this.addGratitude,

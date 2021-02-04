@@ -66,7 +66,7 @@ learnMore=()=>{
                     </div> 
                     <div ref={this.state.statsRef}></div> 
                     <About/>                   
-                                        
+                                            
                  </main>                 
             </div>
         );
