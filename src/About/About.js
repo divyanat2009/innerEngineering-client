@@ -5,7 +5,7 @@ class About extends Component {
     return (
       <section className= "about" id="about">
           <header>
-              What is Inner Engineering?
+              <h2>What is Inner Engineering?</h2>
           </header>
           <main>
               <p>Inner Engineering is a technology for well-being derived from the science of Yoga. 

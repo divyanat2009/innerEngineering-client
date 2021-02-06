@@ -8,7 +8,7 @@
 .tagline{
     text-align: center;
     font-style:italic;
-    font-size:17px;
+    font-size:20px;
     margin: 20px auto;
     font-weight:400;
     max-width:400px;
@@ -26,6 +26,7 @@ header.header-home {
 .header-home h1 {
     max-width: 235px;
     margin: auto;
+    font-size: 50px;
 }
 
 .home .button{
@@ -49,7 +50,6 @@ header.header-home {
 
 .closebtn {
     margin-left: 15px;
-    color: #000;
     font-weight: bold;
     float: right;
     font-size: 22px;
@@ -66,7 +66,16 @@ header.header-home {
     background-color:#40004b;
     color:#fff;
 }
-
+.about {
+    color: #40004b;
+    margin-top: 100px;
+    font-family: 'Lobster Two', cursive;
+    font-style: italic;
+    font-size: 20px;
+}
+.about h2{
+    font-size: 25px;
+}
 @media only screen and (min-width:760px){
     .header-home h1 {
         max-width: none;

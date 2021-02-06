@@ -318,9 +318,10 @@ button{
 
 
 button:hover{
-  background-color:#fff;
+  background-color:#40004b;
+  color:#fff;
   border:0px solid #000;
-  color:#40004b;
+  
 }
 
 .pagination-button-row button:hover{
@@ -424,7 +425,7 @@ color: rgb(170, 170, 170);
     border: 1px #fffb solid;
     background-color:#40004b;
     color:#fff;
-    padding:10px;
+    padding:5px;
     width:105px;
     margin: 10px;
     text-decoration: none;
@@ -436,8 +437,8 @@ color: rgb(170, 170, 170);
 }
 
 .button-link:hover{
-  background-color:#fff;
-  color:#40004b;
+  background-color:#40004b;
+  color:#fff;
 }
 
 /****learnmore****/
