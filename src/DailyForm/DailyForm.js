@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import '../_styles/Form.css';
+import '../_styles/Form.css';
 import ValidationError from '../ValidationError/ValidationError.js';
 import IEContext from '../IEContext.js';
 import config from '../config.js';

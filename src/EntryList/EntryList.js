@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import IEContext from '../IEContext'
 import EntryItem from '../EntryItem/EntryItem.js'
-//import '../_styles/EntryList.css'
+import '../_styles/EntryList.css'
 
 
 class EntryList extends Component{

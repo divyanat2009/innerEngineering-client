@@ -42,7 +42,7 @@ body::after {
 }
 
 h1, h2, h3, h4{
-  font-family: 'Comfortaa', cursive;
+  font-family: 'Raleway', cursive;
   font-family: 'Fredoka One', cursive;
   font-family: 'Lobster Two', cursive; 
 }
@@ -58,12 +58,12 @@ h1{
 
 h1 a.site-heading{
   text-decoration: none;
-  color:#2b3302; 
+  color:#40004b; 
   font-size:1.5em;
 }
 
 h1 a.site-heading:hover{
-  color:#738c11;
+  color:#f3c80a;
   border-bottom:0px solid #996FAB;
 }
 
@@ -168,7 +168,7 @@ nav ul{
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color:  #738c11  ;
+  background-color:  #83a011  ;
   margin: 6px 0;
   transition: 0.4s;
 }
@@ -294,7 +294,7 @@ button{
   margin: 0;
   margin-left:10px;
   font-size: 17px;
-  background-color: #324211;
+  background-color: #e6b856;
   border-radius: 0px;
   box-shadow: 0px 3px 4px #000;
     
@@ -320,7 +320,7 @@ button{
 button:hover{
   background-color:#fff;
   border:0px solid #000;
-  color:#324211;
+  color:#40004b;
 }
 
 .pagination-button-row button:hover{
@@ -430,7 +430,7 @@ color: rgb(170, 170, 170);
     text-decoration: none;
     display: inline-block;
     border: 0px #fff solid;
-    background-color: #324211;
+    background-color: #e6b856;
     border-radius: 0px;
     box-shadow: 0px 3px 4px #000;
 }

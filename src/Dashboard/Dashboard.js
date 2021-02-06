@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import ButtonRow from '../ButtonRow/ButtonRow';
 import RandomQuote from '../RandomQuote/RandomQuote.js';
-//import '../_styles/Dashboard.css';
+import '../_styles/Dashboard.css';
 import Nav from '../Nav/Nav.js';
 import {Link} from 'react-router-dom';
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import IEContext from '../IEContext.js';
-//import '../_styles/Form.css';
+import '../_styles/Form.css';
 import config from '../config.js';
 import ButtonRow from '../ButtonRow/ButtonRow';
 import Nav from '../Nav/Nav.js';
