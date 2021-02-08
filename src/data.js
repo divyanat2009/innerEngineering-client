@@ -99,43 +99,20 @@ module.exports= {
             "author": "Pema Chodron",
         },              
     ],
-    mood:[{
-        "mood_id":"1",
+    moods:[{
+        "id":"1",
         "user_id":"1",
         "mood_level":"4",
-        "date":"January 3rd 2021",   
+        "energy_level":"5",
+        "date_modified":"2021-02-14T19:10:27.090Z",   
     },
     {
-        "mood_id":"2",
-        "user_id":"1",
-        "mood_level":"5",
-        "date":"January 3rd 2021",   
-    },
-    {
-        "mood_id":"3",
-        "user_id":"1",
-        "mood_level":"5",
-        "date":"January 3rd 2021",   
-    },
-   ],
-energy:[{
-    "energy_id":"1",
+    "id":"2",
     "user_id":"1",
-    "energy_level":"4",
-    "date":"Febuary 3rd 2021",   
-    },
-    {
-    "energy_id":"2",
-    "user_id":"1",
-    "energy_level":"5",
-    "date":"Febuary 3rd 2021",   
-    },
-    {
-    "energy_id":"3",
-    "user_id":"1",
-    "energy_level":"5",
-    "date":"Febuary 3rd 2021",   
-    },
-],
+    "mood_level":"5",
+    "energy_level":"2",
+    "date_modified":"2021-02-14T19:10:27.090Z",
+    }   
+    ],
 
 }

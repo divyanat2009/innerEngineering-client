@@ -1,0 +1,35 @@
+.chart {
+    height:280px;
+    width:280px;
+    background: white;
+    margin:10px auto;
+   transition: 0.3s;
+   border:1px solid black;
+   }
+   
+   .chart-pie svg >g >g>g:nth-child(1) {
+     transform: translateX(70px);
+   }
+   
+   .chart-pie svg >g >g>g:nth-child(2) {
+     transform: translateX(160px);
+   }
+   
+   .chart-pie svg >g >g>g:nth-child(3) {
+     transform: translate(70px, 20px);
+   }
+   
+   .chart-pie svg >g >g>g:nth-child(4) {
+     transform: translate(160px, 20px);
+   }
+   
+   .chart:hover {
+     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+   }
+   
+   @media only screen and (min-width:960px){
+     .chart {
+       height:340px;
+       width:340px;
+     }
+   }
