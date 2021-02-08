@@ -31,7 +31,7 @@ class EntryList extends Component{
         //filter for date
         if(selectedDate !== 'all' && selectedDate){         
             results = sortedResults.filter(result=>
-            result.date_modified===selectedDate)         
+            result.date_modified.includes(selectedDate))         
         };
             //filter for rating
         if(selectedRating !== 'all' && selectedRating){         

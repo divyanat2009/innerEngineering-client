@@ -62,6 +62,15 @@ header.header-home {
     width:15px;
 }
 
+.video-container {
+	position: absolute;
+	top: 0;
+	left: 0;	
+	overflow: hidden;
+	background: var(--primary-color) url('../images/poster.jpg') no-repeat center
+		center/cover;
+}
+
 .box button:hover{
     background-color:#40004b;
     color:#fff;

@@ -3,8 +3,6 @@ import About from '../About/About';
 import '../_styles/Home.css';
 import Nav from '../Nav/Nav.js';
 
-
-
 class Home extends Component{
 state = {
         isBoxVisible:false,
@@ -50,7 +48,6 @@ learnMore=()=>{
         const { isBoxVisible } = this.state;
         return(
             <div className="home">
-            
             <Nav pageType={'home'} onSignUpInClick = {this.signUpInClick} gotoLearnMore = {this.gotoLearnMore}/>
                 <header className="header-home">
                     <h1>Inner Engineering</h1>

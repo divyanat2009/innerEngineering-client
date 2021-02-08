@@ -153,88 +153,84 @@ handleSubmit = e =>{
     //for now all entries will get same user_id, id, and date
     //const newid = "10";
     const newuser_id = "2";
-    //this will be based on the date input
-    //const newdate = "May 3rd 2020";
-    
+    //this will be based on the date input    
     //add selfcare
     let newSelfCare=[];
     if(activity1.value){
-         newSelfCare = [{
-               // id:newid,
-                user_id:newuser_id,
-                content:activity1.value,
-                type:type1.value,
-                rating:rating1.value,
-               // date_modified:newdate,
-            }];
+      newSelfCare = [{
+        // id:newid,
+        user_id:newuser_id,
+        content:activity1.value,
+        type:type1.value,
+        rating:rating1.value,
+        // date_modified:newdate,
+      }];
       //  console.log(`nsc from form ${newSelfCare[0].content}`);
-        if(activity2.value){
-          const newSelfCare2 = {
-          //  id:newid,
-            user_id:newuser_id,
-            content:activity2.value,
-            type:type2.value,
-            rating:rating2.value,
-        };
-
-            newSelfCare = [...newSelfCare, newSelfCare2]
-        };
-        if(activity3.value){
-          const newSelfCare3 = {
-           // id:newid,
-            user_id:newuser_id,
-            content:activity3.value,
-            type:type3.value,
-            rating:rating3.value,
-        };
-            newSelfCare = [...newSelfCare, newSelfCare3]
-        };
-   };
+    if(activity2.value){
+      const newSelfCare2 = {
+      //  id:newid,
+      user_id:newuser_id,
+      content:activity2.value,
+      type:type2.value,
+      rating:rating2.value,
+      };
+     newSelfCare = [...newSelfCare, newSelfCare2];
+    };
+    if(activity3.value){
+      const newSelfCare3 = {
+      // id:newid,
+      user_id:newuser_id,
+      content:activity3.value,
+      type:type3.value,
+      rating:rating3.value,
+    };
+    newSelfCare = [...newSelfCare, newSelfCare3]
+    };
+};
 
     //add gratitude
     let newGratitude=[];
     if(gratitude1.value){
-        newGratitude = [{
-            //id:newid,
-            user_id:newuser_id,
-            content:gratitude1.value,
-           // date_modified:newdate,
-            }];
-        if(gratitude2.value){
-            const newGratitude2 = {
-               // id:newid,
-                user_id:newuser_id,
-                content:gratitude2.value,
-                //date_modified:newdate,
-                };
-            newGratitude = [...newGratitude, newGratitude2]
-        };
-        if(gratitude3.value){
-            const newGratitude3 = {
-             //   id:newid,
-                user_id:newuser_id,
-                content:gratitude3.value,
-             //   date_modified:newdate,
-                };
-            newGratitude = [...newGratitude, newGratitude3]
-        };
-       // this.context.addGratitude(newGratitude);
-       // console.log(`this is the nG being sent ${newGratitude[0].content}`);
+      newGratitude = [{
+      //id:newid,
+      user_id:newuser_id,
+      content:gratitude1.value,
+      // date_modified:newdate,
+    }];
+    if(gratitude2.value){
+      const newGratitude2 = {
+      // id:newid,
+      user_id:newuser_id,
+      content:gratitude2.value,
+      //date_modified:newdate,
+    };
+    newGratitude = [...newGratitude, newGratitude2]
+    };
+    if(gratitude3.value){
+      const newGratitude3 = {
+      //   id:newid,
+      user_id:newuser_id,
+      content:gratitude3.value,
+      //   date_modified:newdate,
+    };
+    newGratitude = [...newGratitude, newGratitude3]
+    };
+    // this.context.addGratitude(newGratitude);
+    // console.log(`this is the nG being sent ${newGratitude[0].content}`);
    };
-
     //add energy and mood
     let newMoods={};
     if(energy.value && mood.value){
-        newMoods = {
-           // id:newid,
-            //user_id:newuser_id,
-            energy_level:energy.value,
-            mood_level:mood.value,
-           // date_modified:newdate,
-        };
-       // this.context.addMoods(newMoods);
+      newMoods = {
+      // id:newid,
+      //user_id:newuser_id,
+      energy_level:energy.value,
+      mood_level:mood.value,
+      // date_modified:newdate,
+    };
+    // this.context.addMoods(newMoods);
     }
-    console.log(newGratitude);
+  console.log(newGratitude);
 if(newGratitude.length !== 0){
   fetch(`${config.API_ENDPOINT}api/gratitudes`,{
         method: 'POST',
@@ -255,8 +251,7 @@ if(newGratitude.length !== 0){
         return res.json();
       })
       .then(data => {
-          let formatedDateData = data.map(obj=>FormatDate(obj));
-
+        let formatedDateData = data.map(obj=>FormatDate(obj));
         this.context.addGratitude(formatedDateData);
       })
       .catch(error => {
@@ -264,7 +259,8 @@ if(newGratitude.length !== 0){
       });
     }//end of newGratitude
 
-    if(newSelfCare.length !== 0){
+    if(newSelfCare.length !== 0){      
+      this._isMounted = true;
       fetch(`${config.API_ENDPOINT}api/selfcares`,{
         method: 'POST',
         body: JSON.stringify(newSelfCare),
@@ -277,20 +273,19 @@ if(newGratitude.length !== 0){
         if (!res.ok) {
           // get the error message from the response,
           return res.json().then(error => {
-            // then throw it
             throw error;
           });
         }
         return res.json();
       })
-      .then(data => {
-          let formatedDateData = data.map(obj=>FormatDate(obj));
-         this.context.addSelfCare(formatedDateData);
+      .then(data => {         
+         let formatedDateData = data.map(obj=>FormatDate(obj));
+         this.context.addSelfCare(formatedDateData);         
       })
-      .catch(error => {
+      .catch(error => {        
         this.setState({ error })
       });
-    }//end if newSC
+    };//end if newSC
     if(newMoods){
         fetch(`${config.API_ENDPOINT}api/moods`,{
           method: 'POST',
@@ -323,7 +318,9 @@ if(newGratitude.length !== 0){
     
   this.props.history.push('/dashboard');
 }//end of handleSubmit
-
+componentWillUnmount() {
+  this._isMounted = false;
+}
 validateActivityInputs(){
     if((this.state.activity2.value && !this.state.activity1.value)|| 
       (this.state.activity3.value && !this.state.activity2.value)){
@@ -518,7 +515,7 @@ handleClickCancel = () => {
             </form>
             <ButtonRow
                 links ={
-                       [{'/dashboard':'Your Dashboard'},{'/past-care':'Your Past Care Entries'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
+                       [{'/dashboard':'Your Dashboard'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
                        }/>    
         </section>
         );

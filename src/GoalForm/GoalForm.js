@@ -6,96 +6,84 @@ import ButtonRow from '../ButtonRow/ButtonRow';
 import Nav from '../Nav/Nav.js';
 
 class GoalForm extends Component{
- static contextType = IEContext;
- constructor(props){
-     super(props);
-     this.state={
-        emotional:{
-            value:0,
-            touched:false,
-        },
-       
-        spiritual:{
-            value:0,
-            touched:false,
-        },
+  static contextType = IEContext;
+  constructor(props){
+      super(props);
+      this.state={
+         emotional:{
+             value:0,
+             touched:false,
+         },
         
-        energy:{
-            value:0,
-            touched:false,
-        },
-       
-        physical:{
-            value:0,
-            touched:false,
-        },
-       
-     };
+         spiritual:{
+             value:0,
+             touched:false,
+         },
+         
+         energy:{
+             value:0,
+             touched:false,
+         },
+        
+         physical:{
+             value:0,
+             touched:false,
+         },
+        
+      }
+  }
+ 
+  updateCare=(number, inputId)=>{
+     if(inputId==='emotional')
+     {this.setState({emotional:{value:number , touched: true}})};
+     if(inputId==='physical')
+     {this.setState({physical:{value:number , touched: true}})};
+     if(inputId==='energy')
+     {this.setState({energy:{value:number , touched: true}})};
+     if(inputId==='spiritual')
+     {this.setState({spiritual:{value:number , touched: true}})};
  }
-
-updateCare=(number, inputId)=>{
-    if(inputId==='emotional')
-    {this.setState(
-        {emotional:{value:number , touched: true}
-      });
-    }
-    if(inputId==='physical')
-    {this.setState(
-        {physical:{value:number , touched: true}
-      });
-    }
-    if(inputId==='energy')
-    {this.setState(
-        {energy:{value:number , touched: true}
-      });
-    }
-    if(inputId==='spiritual')
-    {this.setState(
-        {spiritual:{value:number , touched: true}
-      });
-    }
-}
-
-handleSubmit=(e)=>{
-  e.preventDefault();
-  const { emotional, physical, spiritual, energy } = this.state;
-  const goals = {
-        "emotional": emotional.value,
-        "spiritual":spiritual.value,
-        "physical":physical.value,
-        "energy":energy.value
-  };
-
-  fetch(`${config.API_ENDPOINT}api/goals`,{
-    method: 'POST',
-    body: JSON.stringify(goals),
-    headers: {
-     'content-type': 'application/json',
-     'Authorization': `Bearer ${config.API_KEY}`
-    },
-})
-  .then(res => {
-    if (!res.ok) {
-      // get the error message from the response,
-      return res.json().then(error => {
-        // then throw it
-        throw error;
-      });
-    }
-    return res.json();
-  })
-  .then(data => {
-      this.context.updateGoals(data);
-      this.props.history.push('/dashboard');
-  })
-  .catch(error => {
-    this.setState({ error })
-  })
-}
-handleClickCancel = () => {
-    this.props.history.push('/dashboard')
-};
-
+ 
+ handleSubmit=(e)=>{
+   e.preventDefault();
+   const { emotional, physical, spiritual, energy } = this.state;
+   const goals = {
+         "emotional": emotional.value,
+         "spiritual":spiritual.value,
+         "physical":physical.value,
+         "energy":energy.value
+   };
+ 
+   fetch(`${config.API_ENDPOINT}api/goals`,{
+     method: 'POST',
+     body: JSON.stringify(goals),
+      headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${config.API_KEY}`
+     },
+ })
+   .then(res => {
+     if (!res.ok) {
+       // get the error message from the response,
+       return res.json().then(error => {
+         // then throw it
+         throw error
+       })
+     }
+     return res.json()
+   })
+   .then(data => {
+       this.context.updateGoals(data);
+       this.props.history.push('/dashboard');
+   })
+   .catch(error => {
+     this.setState({ error })
+   })
+ }
+ handleClickCancel = () => {
+     this.props.history.push('/dashboard')
+ };
+ 
   render(){
       return(
         <div className="goalform">
@@ -177,7 +165,7 @@ handleClickCancel = () => {
                     </form>
                     <ButtonRow
                         links ={
-                               [{'/dashboard':'Your Dashboard'},{'/daily-form':'Today\'s Wellbeing & Gratitude'},{'/past-care':'Your Past Wellbeing Entries'},{'/past-gratitude':'Your Past Gratitudes'}]
+                               [{'/dashboard':'Your Dashboard'},{'/daily-form':'Daily Form'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'}]
                                }
                     />    
                 </main>

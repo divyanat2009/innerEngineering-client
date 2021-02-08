@@ -4,6 +4,7 @@ import Progress from '../Progress/Progress';
 import RandomQuote from '../RandomQuote/RandomQuote.js';
 import '../_styles/Dashboard.css';
 import Nav from '../Nav/Nav.js';
+import {Link} from 'react-router-dom';
 
 class Dashboard extends Component{
     render(){
@@ -12,13 +13,14 @@ class Dashboard extends Component{
                 <header>
                 <Nav pageType={'interior'}/>
                     <h2>Your Inner Engineering Dashboard</h2>
-                   <RandomQuote/>                   
+                   <RandomQuote/>   
+                   <Link className="button-link block-link" to={`/daily-form`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
                   <Progress/>               
                   <ButtonRow
                      links ={
-                        [{'/daily-form':'Today\'s Wellbeing & Gratitude'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
+                        [{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
                         }
                   />
                 </main>

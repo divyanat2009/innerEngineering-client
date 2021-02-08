@@ -3,18 +3,17 @@
 }
 
 body{
-  background-color:#fff7c8;
   font-family: 'Nunito', sans-serif;
 }
 
 body::after {
   content: "";
-  background-image: url(./images/logo.png);
+  background-image: url(./images/poster.jpg);
   background-repeat:no-repeat;
   background-size:cover;
   background-position:center center;
   background-attachment:fixed;
-  opacity: 0.15;
+  opacity: 0.35;
   top: 0;
   left: 0;
   bottom: 0;
@@ -370,7 +369,7 @@ color: rgb(170, 170, 170);
   border-radius:5px;
   padding:10px;
   margin-inline-start: 0px;
-  background-color: #40004b;
+  background-color: #561561;
   border-radius: 10px;
   box-shadow: 0px 2px 2px #000, inset 0px 1px 2px #fff
 }
@@ -392,7 +391,7 @@ color: rgb(170, 170, 170);
 .recent-activities{
   position: relative;
   margin-bottom:40px;
-  background-color:#40004b;
+  background-color:#7f5286;
   color:#fff;
   padding: 5px;
   border-radius: 3px;
