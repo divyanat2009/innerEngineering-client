@@ -36,7 +36,7 @@ static contextType = IEContext;
                 "progress":progressArray[3],
                 "goal":Number(goals.physical),
             }
-        ]
+        ];
 
         return (
             <div className="chart chart-bar">
@@ -65,7 +65,7 @@ static contextType = IEContext;
                     groupMode="grouped"
                 />
             </div>
-        )
+        );
     }
 }
 

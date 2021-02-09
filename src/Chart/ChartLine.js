@@ -1,4 +1,4 @@
-import { ResponsiveLine } from '@nivo/line'
+import { ResponsiveLine } from '@nivo/line';
 import React, { Component } from 'react';
 import { CreateMoodEnergyData } from '../Functions/CreateMoodEnergyData'
 import IEContext from '../IEContext.js';

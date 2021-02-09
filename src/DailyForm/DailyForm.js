@@ -388,7 +388,7 @@ handleClickCancel = () => {
                         disabled={!this.state.gratitude2.touched}
                         onChange={e => this.updateGratitude(e.target.value, e.target.id)}/>
                         {this.validateGratitudeInputs() && (<ValidationError message={gratitudeError} />
-)}
+        )}
                     </fieldset>
                    
                     <div className="activity-input-area">
@@ -486,7 +486,7 @@ handleClickCancel = () => {
                             </div>                       
                     </fieldset>  
                     {this.validateActivityInputs() && (<ValidationError message={activityError} />)}
-                </div>  {/*--activity-input-area*/}  
+                </div>  
               
                 <fieldset className="mood-input">
                     <legend>How I am feeling today</legend>
@@ -531,9 +531,9 @@ handleClickCancel = () => {
             </form>
             <ButtonRow
                         links ={[{'/dashboard':'Your Dashboard'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]}
-                        />    
+            />    
         </section>
-        )
+        );
     }
 }
 export default DailyForm;
