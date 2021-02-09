@@ -12,6 +12,8 @@ import IEContext from './IEContext.js';
 import data from './data.js';
 import config from './config.js';
 import { FormatDate } from './Functions/FormatDate';
+import UserSignUp from './UserSignUp/UserSignUp';
+import UserSignIn from './UserSignIn/UserSignIn';
 
 
 class App extends Component{
@@ -262,6 +264,8 @@ componentDidMount(){
         <Route exact path='/past-care' component={PastCare}/> 
         <Route exact path='/past-gratitude' component={PastGratitude}/> 
         <Route exact path='/goal-form' component={GoalForm}/> 
+        <Route exact path='/user-signup' component={UserSignUp}/>
+        <Route exact path='/user-signin' component={UserSignIn}/> 
         
         <Footer/>
         </IEContext.Provider>              

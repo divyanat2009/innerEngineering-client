@@ -38,12 +38,18 @@ makeNavVisible=()=>{
       if(this.props.pageType === 'home'){
          List = (
                 <div className="home-nav-links">
-                    <button className="nav-link" onClick={this.props.onSignUpInClick}>Sign-up</button>
+                    <button className="nav-link" onClick={this.props.onSignUpPopUp}>Sign-up</button>
                     <button className="nav-link" onClick={this.props.onSignUpInClick}>Sign-in</button>
                 </div>
                 );
-            }
-
+      }
+      if(this.props.pageType === 'account'){
+        List = (
+               <div className="account-nav-links">
+                   <h1 className="site-heading">Inner Engineering</h1>
+               </div>
+        );
+      }
         return(
             <div>
                 {List}

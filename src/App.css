@@ -228,7 +228,73 @@ nav ul{
 nav.nav-visible ul{
   display:flex;
 }
+/*User Sign Up*/
+.account-page > div{
+  border-bottom: 2px solid #391832;
+  }
+  .form-field-group {
+    margin-bottom: 15px;    
+    align-items: center;
+}
+label {    
+    margin-bottom: 10px;
+    width: 200px;
+    
+    font-size:13px;
+}
+form.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+select {
+    font-size: 14px;
+    border:1px solid #40004b;
+    margin-bottom: 0px;
+}
 
+input, textarea{
+    width: 210px;
+    margin-bottom:10px;
+    font-family: 'Nunito', sans-serif;
+}
+
+.large-text-area {
+    flex-direction: column;
+    text-align: center;
+}
+
+.large-text-area textarea {
+    width: 96%;
+}
+
+form.search-form {
+    display: flex;
+    justify-content: space-between;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-form input{
+    width:200px;
+    margin-bottom:2px;
+}
+
+textarea{
+    height:150px;
+}
+
+input[type="text"]:disabled {
+    background: #ddd;
+}
+
+input{
+ min-height: 25px;
+}
+
+.update-account-form p{
+    color:#000;
+}
 /******Filter Row******/
 .filter-sort-control-form {
   display: flex;
@@ -452,7 +518,7 @@ color: rgb(170, 170, 170);
   display:flex;
   font-size:14px;
   justify-content:space-between;
-  margin-top:25px;
+  margin-top: 200px;
 }
 
 .footer-section{
