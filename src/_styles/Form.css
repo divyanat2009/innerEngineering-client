@@ -6,7 +6,9 @@
 label {
     margin-right: 5px;
 }
-
+.account-nav-links h1{
+    font-size: 35px;
+}
 select {
     font-size: 14px;
     border:1px solid #40004b;
