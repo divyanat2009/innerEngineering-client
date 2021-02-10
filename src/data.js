@@ -1,4 +1,16 @@
 module.exports= {
+    user:[
+        {
+            "user_id":1,
+            "username":"davidBeckham",
+            "fullname":"David Beckham"
+        },
+        {
+            "user_id":"2",
+            "username":"rizA",
+            "fullname":"Riz Ahmed"
+        }
+    ],
     selfcare:[
         {
             "id":"1",

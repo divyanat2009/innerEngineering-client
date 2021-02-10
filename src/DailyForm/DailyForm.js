@@ -180,6 +180,7 @@ handleSubmit = e =>{
     //this will be based on the date input    
     //add selfcare
     let newSelfCare=[];
+    //1st input field
     if(activity1.value){
       newSelfCare = [{
         user_id:newuser_id,
@@ -187,6 +188,7 @@ handleSubmit = e =>{
         type:type1.value,
         rating:rating1.value,
       }]
+      //2nd input field
     if(activity2.value){
       const newSelfCare2 = {
       user_id:newuser_id,
@@ -196,6 +198,7 @@ handleSubmit = e =>{
       }
       newSelfCare = [...newSelfCare, newSelfCare2];
     };
+    //3rd input field
     if(activity3.value){
       const newSelfCare3 = {
       user_id:newuser_id,

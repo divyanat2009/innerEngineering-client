@@ -20,6 +20,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state={
+      users:data.users,
       selfcares:data.selfcare,
       gratitudes:data.gratitude,
       goals:data.goals,
@@ -109,6 +110,30 @@ componentDidMount(){
   this.setState(
     { error : null }
   );
+  //getting users
+  fetch(`${config.API_ENDPOINT}/users`,{
+      method:'GET',
+      header:{
+        'content-type':'application/json',       
+        'Authorization': `Bearer ${config.API_KEY}`
+      },
+    })
+    .then(res=>{
+      if(!res.ok){
+        throw new Error('Something went wrong, please try again')
+      }
+      return res.json();
+    })
+    .then(userdata=>{   
+      this.setState({
+        users:userdata
+      });
+    })
+    .catch(err=>{
+      this.setState({
+        error:err.message
+      });
+    });  
   //getting gratitudes
   fetch(`${config.API_ENDPOINT}api/gratitudes`,{
     method:'GET',
@@ -137,6 +162,7 @@ componentDidMount(){
       error: err.message
     });
   })
+  //getting selfcares
   fetch(`${config.API_ENDPOINT}api/selfcares`,{
     method:'GET',
     headers:{
@@ -184,6 +210,7 @@ componentDidMount(){
       error: err.message
     });
   })
+  //getting goals
   fetch(`${config.API_ENDPOINT}api/goals`,{
     method:'GET',
     headers:{
@@ -208,7 +235,7 @@ componentDidMount(){
       error: err.message
     });
   })//end of fetch for goals
-
+ //getting moods
   fetch(`${config.API_ENDPOINT}api/moods`,{
     method:'GET',
     headers:{
@@ -243,6 +270,7 @@ componentDidMount(){
       goals:this.state.goals,
       moods:this.state.moods,
       quotes:this.state.quotes,
+      addUser:this.addUser,
       addSelfCare:this.addSelfCare,
       addGratitude:this.addGratitude,
       addMoods:this.addMoods,

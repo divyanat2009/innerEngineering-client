@@ -5,7 +5,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Summary
 
-Inspired by mu mother and sister, this repo contains the files for an app created to motivate and inspire users to take care for themselves and keep a track of daily activities.
+Inspired by my mother and sister, this repo contains the files for an app created to motivate and inspire users to take care for themselves and keep a track of daily activities.
 Users can log their daily selfcare and gratitude, set goals for themselves, and celebrate their progress.
 
 ## Demo
@@ -32,5 +32,5 @@ npm run test
 React, HTML, CSS, Javascript
 
 ## API
-inner-engineering-server
+innerEngineering-server
 Deployed at : https://evening-hamlet-53264.herokuapp.com/
