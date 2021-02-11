@@ -30,5 +30,4 @@ class MostRecent extends Component{
         );
     }
 }
-
 export default MostRecent;

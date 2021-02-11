@@ -2,7 +2,7 @@ module.exports= {
     user:[
         {
             "user_id":1,
-            "username":"davidBeckham",
+            "username":"dBeckham",
             "fullname":"David Beckham"
         },
         {

@@ -1,66 +1,57 @@
 import React, {Component} from 'react';
-import Nav from '../Nav/Nav';
-import {API_ENDPOINT} from '../config';
-import {BASE_URL_FRONTEND} from '../config';    
-import Cookies from 'universal-cookie';
-const cookies = new Cookies();
+import AuthApiService from '../services/auth-api-service';
+import TokenService from '../services/token-service';
+import Nav from '../Nav/Nav';   
 
-
-class UserSignIn extends Component{
-    state = {
-        isBoxVisible:false,
-        username: "",
-        password: ""
-    }
+class UserSignIn extends Component {
+    static defaultProps = {
+      onLoginSuccess: () => {}
+    };
+    state = { 
+       loading: false,
+       error: null 
+    };
     
-    closeWindow=()=>{
-        this.setState({ isBoxVisible: false });
-    } 
-    setForm(e)
-   {
-    const {name, value} = e.target;    
-    this.setState({
-        [name] : value
-    });
-   }
-    signIn = (e) =>  { 
-        e.preventDefault();
-        fetch(API_ENDPOINT+'/users/checkuser/'+this.state.username, {
-          method:'post',
-          headers:{
-              'Content-Type' : 'application/json'
-            },
-          body:JSON.stringify({
-            password: this.state.password 
-          })
+    handleSubmitJwtAuth = ev => {
+      ev.preventDefault()
+      this.setState({ 
+        loading: true, 
+        error: null });
+      const { username, password } = ev.target;
+      AuthApiService.postLogin({
+        username: username.value,
+        password: password.value,
+      })
+        .then(res => {
+          username.value = ''
+          password.value = ''
+          TokenService.saveAuthToken(res.authToken)
+          this.props.onLoginSuccess()
+          this.setState({
+            loading: false
+          });  
+          this.props.history.push('/dashboard/'+res.username);           
         })
-        .then(response=> response.json())
-        .then(response=>{
-            if(response) 
-            {            
-                cookies.set('token', response.token, { path: '/' });
-                window.location.href = BASE_URL_FRONTEND+"/"+this.state.username+"/dashboard";
-            };
-        })
-        .catch(err=> alert(err));
-    }   
-    render(){      
-        
+        .catch(res => {
+          this.setState({ error: res.error })
+        });
+    }
+    render() {            
         return(
           <div className="account-page">
             <Nav pageType={'account'}/>
                         
-                <form className="update-account-form" onSubmit={e=>this.signIn(e)}>
+                <form className="update-account-form" onSubmit={this.handleSubmitJwtAuth}>
                     <h2>My Account</h2>                    
                     <p>Please enter your username and password to SignIn.</p>
                     
                     <div className="form-field-group">
                         <label htmlFor="username">UserName</label>
-                        <input placeholder="user123" type="username" name='username' id='username' required onChange={(e)=>this.setForm(e)}/>
+                        <input placeholder="user123" type="username" name='username' id='username' required/>
                     </div>
                     <div className="form-field-group">
                         <label htmlFor="password">Password</label>
-                        <input placeholder="*******" type="password" name='password' id='password' autoComplete="new-password" required onChange={(e)=>this.setForm(e)}/>
+                        <input placeholder="*******" type="password" name='password' id='password' autoComplete="new-password" required/>
                     </div>
                     <button type="submit">SignIn</button>                    
                    </form> 

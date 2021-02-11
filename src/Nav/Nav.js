@@ -31,6 +31,7 @@ makeNavVisible=()=>{
                     <li><NavLink to={`/past-care`}>Past Wellbeing</NavLink></li>
                     <li><NavLink to={`/past-gratitude`}>Past Gratitude</NavLink></li>                    
                     <li><NavLink to={`/goal-form`}>Goals</NavLink></li>
+                    <li><NavLink to={`/`}>LogOut</NavLink></li>
                 </ul>
             </nav>
          );

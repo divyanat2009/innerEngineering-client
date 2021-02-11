@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TokenService from '../services/token-service';
 import '../_styles/Form.css';
 import ValidationError from '../ValidationError/ValidationError.js';
 import IEContext from '../IEContext.js';
@@ -247,7 +248,7 @@ handleSubmit = e =>{
     body: JSON.stringify(newGratitude),
     headers: {
      'content-type': 'application/json',
-     'Authorization': `Bearer ${config.API_KEY}`
+     'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
     .then(res => {
@@ -275,7 +276,7 @@ handleSubmit = e =>{
       body: JSON.stringify(newSelfCare),
       headers: {
        'content-type': 'application/json',
-       'Authorization': `Bearer ${config.API_KEY}`
+       'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res => {
@@ -302,7 +303,7 @@ handleSubmit = e =>{
           body: JSON.stringify(newMoods),
            headers: {
            'content-type': 'application/json',
-           'Authorization': `Bearer ${config.API_KEY}`
+           'authorization': `bearer ${TokenService.getAuthToken()}`,
           },
       })
         .then(res => {

@@ -7,11 +7,21 @@ import Nav from '../Nav/Nav.js';
 import {Link} from 'react-router-dom';
 
 class Dashboard extends Component{
+    state = {
+        user:""
+    }
+    componentDidMount() {
+      const user = this.props.match.params.username;
+      this.setState({
+        user : user
+      })
+    } 
+    
     render(){
         return(
             <div className="dashboard">
                 <header>
-                <Nav pageType={'interior'}/>
+                <Nav pageType={'interior'} user={this.state.user}/>
                     <h2>Your Inner Engineering Dashboard</h2>
                    <RandomQuote/>   
                    <Link className="button-link block-link" to={`/daily-form`}>Today's Wellbeing &amp; Gratitude</Link>                
