@@ -534,7 +534,7 @@ handleClickCancel = () => {
              </div>
             </form>
             <ButtonRow
-                        links ={[{'/dashboard':'Your Dashboard'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]}
+                links ={[{'/dashboard/:username':'Your Dashboard'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]}
             />    
         </section>
         );

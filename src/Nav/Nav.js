@@ -26,10 +26,10 @@ makeNavVisible=()=>{
                 <h1><Link className="site-heading" to={'/dashboard'}>Inner Engineering</Link></h1>
                 
                 <ul>
-                    <li><NavLink to={`/dashboard`}>Dashboard</NavLink></li>                    
+                    <li><NavLink to={`/dashboard/:username`}>Dashboard</NavLink></li>                    
                     <li><NavLink to={`/daily-form`}>Daily Form</NavLink></li>
-                    <li><NavLink to={`/past-care`}>Past Wellbeing</NavLink></li>
-                    <li><NavLink to={`/past-gratitude`}>Past Gratitude</NavLink></li>                    
+                    <li><NavLink to={`/past-care/:username`}>Past Wellbeing</NavLink></li>
+                    <li><NavLink to={`/past-gratitude/:username`}>Past Gratitude</NavLink></li>                    
                     <li><NavLink to={`/goal-form`}>Goals</NavLink></li>
                     <li><NavLink to={`/`}>LogOut</NavLink></li>
                 </ul>

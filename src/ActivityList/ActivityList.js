@@ -9,10 +9,10 @@ class ActivityList extends Component{
         //getting the url for the "See All" button
         let linkURL = '/';
         if(this.props.typePage ==='selfcares'){
-          linkURL = '/past-care';
+          linkURL = '/past-care/:username';
         }
         else if(this.props.typePage ==='gratitudes'){
-          linkURL = '/past-gratitude';
+          linkURL = '/past-gratitude/:username';
         }       
         let results = this.props.list;
 

@@ -3,6 +3,7 @@ import AuthApiService from '../services/auth-api-service';
 import TokenService from '../services/token-service';
 import Nav from '../Nav/Nav';   
 
+
 class UserSignIn extends Component {
     static defaultProps = {
       onLoginSuccess: () => {}
@@ -28,8 +29,9 @@ class UserSignIn extends Component {
           TokenService.saveAuthToken(res.authToken)
           this.props.onLoginSuccess()
           this.setState({
-            loading: false
-          });  
+            loading: false,            
+          });
+
           this.props.history.push('/dashboard/'+res.username);           
         })
         .catch(res => {

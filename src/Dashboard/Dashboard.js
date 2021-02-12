@@ -30,7 +30,7 @@ class Dashboard extends Component{
                   <Progress/>               
                   <ButtonRow
                      links ={
-                        [{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
+                        [{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
                         }
                   />
                 </main>

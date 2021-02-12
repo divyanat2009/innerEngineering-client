@@ -14,6 +14,7 @@ import config from './config.js';
 import { FormatDate } from './Functions/FormatDate';
 import UserSignUp from './UserSignUp/UserSignUp';
 import UserSignIn from './UserSignIn/UserSignIn';
+import TokenService from './services/token-service';
 
 
 class App extends Component{
@@ -21,6 +22,7 @@ class App extends Component{
     super(props);
     this.state={
       users:data.users,
+      userId:"",
       selfcares:data.selfcare,
       gratitudes:data.gratitude,
       goals:data.goals,
@@ -105,13 +107,41 @@ updateGoals=(newgoals)=>{
     goals:newgoals
   });
 }
-
+setUserId=(id)=>{
+  this.setState({
+    userId:id
+  })
+}
 componentDidMount(){
   this.setState(
     { error : null }
   );
   //getting users
-  fetch(`${config.API_ENDPOINT}/users`,{
+  fetch(`${config.API_ENDPOINT}api/users`,{
+      method:'GET',
+      header:{
+        'content-type':'application/json',       
+        'Authorization': `Bearer ${config.API_KEY}`
+      },
+    })
+    .then(res=>{
+      if(!res.ok){
+        throw new Error('Something went wrong, please try again')
+      }
+      return res.json();
+    })
+    .then(userdata=>{   
+      this.setState({
+        users:userdata
+      });
+    })
+    .catch(err=>{
+      this.setState({
+        error:err.message
+      });
+    });  
+   
+    fetch(`${config.API_ENDPOINT}api/users/${this.state.userId}`,{
       method:'GET',
       header:{
         'content-type':'application/json',       
@@ -139,7 +169,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -167,7 +197,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -191,7 +221,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -215,7 +245,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -240,7 +270,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -268,6 +298,7 @@ componentDidMount(){
       selfcares:this.state.selfcares,
       gratitudes:this.state.gratitudes,
       goals:this.state.goals,
+      setUserId:this.setUserId,
       moods:this.state.moods,
       quotes:this.state.quotes,
       addUser:this.addUser,
@@ -287,13 +318,13 @@ componentDidMount(){
         <IEContext.Provider value={contextValue}>
        
         <Route exact path='/' component={Home}/> 
-        <Route exact path='/dashboard' component={Dashboard} /> 
+        <Route exact path='/dashboard/:username' component={Dashboard} /> 
         <Route exact path='/daily-form' component={DailyForm}/> 
-        <Route exact path='/past-care' component={PastCare}/> 
-        <Route exact path='/past-gratitude' component={PastGratitude}/> 
+        <Route exact path='/past-care/:username' component={PastCare}/> 
+        <Route exact path='/past-gratitude/:username' component={PastGratitude}/> 
         <Route exact path='/goal-form' component={GoalForm}/> 
         <Route exact path='/user-signup' component={UserSignUp}/>
-        <Route exact path='/user-signin' component={UserSignIn}/> 
+        <Route exact path='/user-signin' component={UserSignIn}/>         
         
         <Footer/>
         </IEContext.Provider>              

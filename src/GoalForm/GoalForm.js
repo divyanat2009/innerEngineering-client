@@ -4,6 +4,7 @@ import '../_styles/Form.css';
 import config from '../config.js';
 import ButtonRow from '../ButtonRow/ButtonRow';
 import Nav from '../Nav/Nav.js';
+import TokenService from '../services/token-service';
 
 class GoalForm extends Component{
   static contextType = IEContext;
@@ -59,7 +60,7 @@ class GoalForm extends Component{
      body: JSON.stringify(goals),
       headers: {
       'content-type': 'application/json',
-      'Authorization': `Bearer ${config.API_KEY}`
+      'authorization': `bearer ${TokenService.getAuthToken()}`,
      },
  })
    .then(res => {
@@ -74,14 +75,14 @@ class GoalForm extends Component{
    })
    .then(data => {
        this.context.updateGoals(data);
-       this.props.history.push('/dashboard');
+       this.props.history.push('/dashboard/:username');
    })
    .catch(error => {
      this.setState({ error })
    })
  }
  handleClickCancel = () => {
-     this.props.history.push('/dashboard')
+     this.props.history.push('/dashboard/:username')
  };
  
   render(){
@@ -165,7 +166,7 @@ class GoalForm extends Component{
                     </form>
                     <ButtonRow
                         links ={
-                               [{'/dashboard':'Your Dashboard'},{'/daily-form':'Daily Form'},{'/past-care':'Your Past Wellbeing'},{'/past-gratitude':'Your Past Gratitudes'}]
+                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form':'Daily Form'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'}]
                                }
                     />    
                 </main>
