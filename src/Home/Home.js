@@ -55,7 +55,7 @@ learnMore=()=>{
                     <h1>Inner Engineering</h1>
                     <h2 className="tagline">As there is a science and technology to create external well-being, there is a whole dimension of science and technology for inner well-being.</h2>
                        <button className="button" onClick={this.learnMore}>Learn More</button>     
-                       <button className="button" onClick={this.startExploring}>Explore</button>                   
+                                         
                  </header>
                  <main>                    
                     <div ref={this.state.statsRef}></div> 

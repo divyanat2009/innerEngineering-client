@@ -18,7 +18,9 @@ class RandomQuote extends Component{
         let quote = this.context.quotes[quotePickNumber].content;
         let author = this.context.quotes[quotePickNumber].author;
         
-        this.setState({choseQuoteRan:true, dailyQuote:quote, author:author}); 
+        this.setState({
+            choseQuoteRan:true, dailyQuote:quote, author:author
+        }); 
         //return quote
      }
 componentDidMount(){

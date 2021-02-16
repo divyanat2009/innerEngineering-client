@@ -6,6 +6,10 @@ import '../_styles/GoalList.css';
 class GoalList extends Component{
     static contextType = IEContext;   
     //removing any empty values from display
+    state={
+        goals:[],
+        user:""
+    }
 
     render(){
         let goalsObj = this.context.goals;       
@@ -34,7 +38,7 @@ class GoalList extends Component{
                             </li>)
                         }                 
                     </ul>
-                    <Link className="button-link" to={'/goal-form'}>Update</Link>
+                    <Link className="button-link" to={'/goal-form/${this.state.user}'}>Update</Link>
                 </main>
             </section>
         );

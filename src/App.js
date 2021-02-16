@@ -22,6 +22,7 @@ class App extends Component{
     super(props);
     this.state={
       users:data.users,
+      username:"",
       userId:"",
       selfcares:data.selfcare,
       gratitudes:data.gratitude,
@@ -89,8 +90,7 @@ addSelfCare=(newSelfCare)=>{
     });  
 };
 
-addGratitude=(newGratitude)=>{
-  console.log(`this is the OG length ${this.state.gratitudes.length}`)
+addGratitude=(newGratitude)=>{  
   this.setState({
     gratitudes: [...this.state.gratitudes, ...newGratitude]
   });
@@ -112,10 +112,12 @@ setUserId=(id)=>{
     userId:id
   })
 }
-componentDidMount(){
-  this.setState(
-    { error : null }
-  );
+
+componentDidMount(){  
+  this.setState({
+    error:null
+  });
+
   //getting users
   fetch(`${config.API_ENDPOINT}api/users`,{
       method:'GET',
@@ -298,6 +300,7 @@ componentDidMount(){
       selfcares:this.state.selfcares,
       gratitudes:this.state.gratitudes,
       goals:this.state.goals,
+      users:this.users,
       setUserId:this.setUserId,
       moods:this.state.moods,
       quotes:this.state.quotes,
@@ -319,10 +322,10 @@ componentDidMount(){
        
         <Route exact path='/' component={Home}/> 
         <Route exact path='/dashboard/:username' component={Dashboard} /> 
-        <Route exact path='/daily-form' component={DailyForm}/> 
+        <Route exact path='/daily-form/:username' component={DailyForm}/> 
         <Route exact path='/past-care/:username' component={PastCare}/> 
         <Route exact path='/past-gratitude/:username' component={PastGratitude}/> 
-        <Route exact path='/goal-form' component={GoalForm}/> 
+        <Route exact path='/goal-form/:username' component={GoalForm}/> 
         <Route exact path='/user-signup' component={UserSignUp}/>
         <Route exact path='/user-signin' component={UserSignIn}/>         
         

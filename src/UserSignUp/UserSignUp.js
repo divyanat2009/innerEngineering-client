@@ -5,8 +5,8 @@ import AuthApiService from '../services/auth-api-service';
 class UserSignUp extends Component{
   constructor(props) {
     super(props);
-    this.state = {
-      loading: false // will be true when ajax request is running
+    this.state = {    
+      loading: false 
     };
   }
     static defaultProps = {
@@ -70,7 +70,7 @@ class UserSignUp extends Component{
               </main>
             </div>
 
-        )
+        );
     }
 }
 export default UserSignUp;

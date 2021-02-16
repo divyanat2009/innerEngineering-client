@@ -76,7 +76,17 @@ constructor(props){
             touched:false
         },
         error:null,
+        user: "",
+        addGratitude:[],
+        addMoods:[],
+        addSelfCare:[]
     };
+}
+componentDidMount() {
+  const user = this.props.match.params.username;
+  this.setState({
+    user : user
+  });
 }
 
 updateGratitude=(gratitude, inputId)=>{
@@ -242,8 +252,11 @@ handleSubmit = e =>{
         };
   // this.context.addMoods(newMoods);
   };
-  if(newGratitude.length !== 0){
-  fetch(`${config.API_ENDPOINT}api/gratitudes`,{
+  if(newGratitude.length !== 0){   
+    const user_id = this.props.match.params.username; 
+
+    const newGratitude=this.state;
+  fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
     method: 'POST',
     body: JSON.stringify(newGratitude),
     headers: {
@@ -263,15 +276,17 @@ handleSubmit = e =>{
       })
       .then(data => {
         let formatedDateData = data.map(obj=>FormatDate(obj));
-        this.context.addGratitude(formatedDateData);
+        this.state.addGratitude(formatedDateData);
       })
       .catch(error => {
         this.setState({ error })
       });
     }//end of newGratitude
 
-  if(newSelfCare.length !== 0){
-    fetch(`${config.API_ENDPOINT}api/selfcares`,{
+  if(newSelfCare.length !== 0){    
+    const user_id = this.props.match.params.username;
+    const newSelfCare=this.state;
+    fetch(`${config.API_ENDPOINT}api/selfcares/`+user_id,{
       method: 'POST',
       body: JSON.stringify(newSelfCare),
       headers: {
@@ -291,14 +306,16 @@ handleSubmit = e =>{
       })
       .then(data => {
           let formatedDateData = data.map(obj=>FormatDate(obj));
-         this.context.addSelfCare(formatedDateData);
+         this.state.addSelfCare(formatedDateData);
       })
       .catch(error => {
         this.setState({ error });
       });
     }//end if newSC
-    if(newMoods){
-        fetch(`${config.API_ENDPOINT}api/moods`,{
+    if(newMoods){      
+      const user_id = this.props.match.params.username;
+      const newMoods=this.state;
+        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
           method: 'POST',
           body: JSON.stringify(newMoods),
            headers: {
@@ -319,14 +336,14 @@ handleSubmit = e =>{
         .then(data => {            
             let moodArray = [{data}];
             let formatedDateData = moodArray.map(obj=>FormatDate(obj));
-            this.context.addMoods(formatedDateData);
+            this.state.addMoods(formatedDateData);
         })
         .catch(error => {
           this.setState({ error });
         });
       }//end if newMood
-    
-  this.props.history.push('/dashboard');
+      
+  this.props.history.push(`/dashboard/${this.state.user}`);
 }//end of handleSubmit
 
 validateActivityInputs(){
@@ -366,7 +383,7 @@ validateTypeRating(){
 }
 
 handleClickCancel = () => {
-    this.props.history.push('/dashboard');
+    this.props.history.push('/dashboard/:username');
 };
 
     render(){
@@ -376,7 +393,7 @@ handleClickCancel = () => {
         return(
             <section className="dailyform">
                 <header>
-                    <Nav pageType={'interior'}/>
+                    <Nav pageType={'interior'} user={this.state.user}/>
                     <h2>Today's Wellbeing and Gratitude</h2>
                 </header>
                 <form className="daily-form" onSubmit={e=>this.handleSubmit(e)}>
@@ -534,7 +551,10 @@ handleClickCancel = () => {
              </div>
             </form>
             <ButtonRow
-                links ={[{'/dashboard/:username':'Your Dashboard'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]}
+                links ={[{'/dashboard/${this.state.user}':'Your Dashboard'},
+                         {'/past-care/:username':'Your Past Wellbeing'},
+                         {'/past-gratitude/:username':'Your Past Gratitudes'},
+                         {'/goal-form/${this.state.user}':'Set Your Goals'}]}
             />    
         </section>
         );

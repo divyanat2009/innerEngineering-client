@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 class Dashboard extends Component{
     state = {
-        user:""
+        user:"",        
     }
     componentDidMount() {
       const user = this.props.match.params.username;
@@ -24,13 +24,13 @@ class Dashboard extends Component{
                 <Nav pageType={'interior'} user={this.state.user}/>
                     <h2>Your Inner Engineering Dashboard</h2>
                    <RandomQuote/>   
-                   <Link className="button-link block-link" to={`/daily-form`}>Today's Wellbeing &amp; Gratitude</Link>                
+                   <Link className="button-link block-link" to={`/daily-form/${this.state.user}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
                   <Progress/>               
                   <ButtonRow
                      links ={
-                        [{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'},{'/goal-form':'Set Your Goals'}]
+                        [{'/past-care/${this.state.user}':'Your Past Wellbeing'},{'/past-gratitude/${this.state.user}':'Your Past Gratitudes'},{'/goal-form/${this.state.user}':'Set Your Goals'}]
                         }
                   />
                 </main>

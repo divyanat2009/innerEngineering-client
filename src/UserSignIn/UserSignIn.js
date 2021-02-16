@@ -5,19 +5,16 @@ import Nav from '../Nav/Nav';
 
 
 class UserSignIn extends Component {
-    static defaultProps = {
-      onLoginSuccess: () => {}
-    };
-    state = { 
-       loading: false,
+   
+    state = {        
        error: null 
     };
     
     handleSubmitJwtAuth = ev => {
       ev.preventDefault()
-      this.setState({ 
-        loading: true, 
-        error: null });
+      this.setState({         
+        error: null 
+      });
       const { username, password } = ev.target;
       AuthApiService.postLogin({
         username: username.value,
@@ -27,10 +24,7 @@ class UserSignIn extends Component {
           username.value = ''
           password.value = ''
           TokenService.saveAuthToken(res.authToken)
-          this.props.onLoginSuccess()
-          this.setState({
-            loading: false,            
-          });
+        
 
           this.props.history.push('/dashboard/'+res.username);           
         })

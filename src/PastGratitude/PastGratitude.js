@@ -20,7 +20,7 @@ class PastGratitude extends Component{
                     <EntryList typeOfResults = {'gratitudes'} />    
                     <ButtonRow
                         links ={
-                               [{'/dashboard':'Your Dashboard'},{'/daily-form':'Daily Form'},{'/past-care':'Your Past Wellbeing'},{'/goal-form':'Set Your Goals'}]
+                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form/:username':'Daily Form'},{'/past-care/:username':'Your Past Wellbeing'},{'/goal-form/:username':'Set Your Goals'}]
                                }
                     />               
                 </main>

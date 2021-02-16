@@ -29,20 +29,42 @@ class GoalForm extends Component{
          physical:{
              value:0,
              touched:false,
-         },
-        
+         },    
+         user:"",            
       }
+  }
+  componentDidMount() {
+    const user = this.props.match.params.username;
+    this.setState({
+      user : user
+    });
   }
  
   updateCare=(number, inputId)=>{
      if(inputId==='emotional')
-     {this.setState({emotional:{value:number , touched: true}})};
+     {
+        this.setState({
+            emotional:{value:number , touched: true}
+        })
+    };
      if(inputId==='physical')
-     {this.setState({physical:{value:number , touched: true}})};
+     {
+        this.setState({
+            physical:{value:number , touched: true}
+        })
+    };
      if(inputId==='energy')
-     {this.setState({energy:{value:number , touched: true}})};
+     {
+        this.setState({
+            energy:{value:number , touched: true}
+        })
+    };
      if(inputId==='spiritual')
-     {this.setState({spiritual:{value:number , touched: true}})};
+     {
+        this.setState({
+            spiritual:{value:number , touched: true}
+        })
+    };
  }
  
  handleSubmit=(e)=>{
@@ -54,7 +76,7 @@ class GoalForm extends Component{
          "physical":physical.value,
          "energy":energy.value
    };
- 
+   
    fetch(`${config.API_ENDPOINT}api/goals`,{
      method: 'POST',
      body: JSON.stringify(goals),
@@ -74,7 +96,7 @@ class GoalForm extends Component{
      return res.json()
    })
    .then(data => {
-       this.context.updateGoals(data);
+       this.state.updateGoals(data);
        this.props.history.push('/dashboard/:username');
    })
    .catch(error => {
@@ -89,7 +111,7 @@ class GoalForm extends Component{
       return(
         <div className="goalform">
             <header>
-               <Nav pageType={'interior'}/>
+               <Nav pageType={'interior'} user={this.state.user}/>
                   <h2>Your Goals</h2>
             </header>
             <main>
@@ -166,7 +188,7 @@ class GoalForm extends Component{
                     </form>
                     <ButtonRow
                         links ={
-                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form':'Daily Form'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'}]
+                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form/:username':'Daily Form'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'}]
                                }
                     />    
                 </main>
