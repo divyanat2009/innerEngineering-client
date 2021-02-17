@@ -97,14 +97,14 @@ class GoalForm extends Component{
    })
    .then(data => {
        this.state.updateGoals(data);
-       this.props.history.push('/dashboard/:username');
+       this.props.history.push('/dashboard/${this.state.user}');
    })
    .catch(error => {
      this.setState({ error })
    })
  }
  handleClickCancel = () => {
-     this.props.history.push('/dashboard/:username')
+     this.props.history.push(`/dashboard/${this.state.user}`)
  };
  
   render(){
@@ -188,7 +188,7 @@ class GoalForm extends Component{
                     </form>
                     <ButtonRow
                         links ={
-                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form/:username':'Daily Form'},{'/past-care/:username':'Your Past Wellbeing'},{'/past-gratitude/:username':'Your Past Gratitudes'}]
+                               [{'/dashboard/${this.state.user}':'Your Dashboard'},{'/daily-form/${this.state.user}':'Daily Form'},{'/past-care/${this.state.user}':'Your Past Wellbeing'},{'/past-gratitude/${this.state.user}':'Your Past Gratitudes'}]
                                }
                     />    
                 </main>

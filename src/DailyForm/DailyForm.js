@@ -86,9 +86,8 @@ componentDidMount() {
   const user = this.props.match.params.username;
   this.setState({
     user : user
-  });
-}
-
+  })
+} 
 updateGratitude=(gratitude, inputId)=>{
 if(inputId==='gratitude1')
   {
@@ -253,10 +252,9 @@ handleSubmit = e =>{
   // this.context.addMoods(newMoods);
   };
   if(newGratitude.length !== 0){   
-    const user_id = this.props.match.params.username; 
-
-    const newGratitude=this.state;
-  fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
+    //const user_id = this.props.match.params.username; 
+    //const newGratitude=this.state;
+  fetch(`${config.API_ENDPOINT}api/gratitudes`,{
     method: 'POST',
     body: JSON.stringify(newGratitude),
     headers: {
@@ -284,9 +282,9 @@ handleSubmit = e =>{
     }//end of newGratitude
 
   if(newSelfCare.length !== 0){    
-    const user_id = this.props.match.params.username;
-    const newSelfCare=this.state;
-    fetch(`${config.API_ENDPOINT}api/selfcares/`+user_id,{
+    //const user_id = this.props.match.params.username;
+    //const newSelfCare=this.state;
+    fetch(`${config.API_ENDPOINT}api/selfcares`,{
       method: 'POST',
       body: JSON.stringify(newSelfCare),
       headers: {
@@ -313,9 +311,9 @@ handleSubmit = e =>{
       });
     }//end if newSC
     if(newMoods){      
-      const user_id = this.props.match.params.username;
-      const newMoods=this.state;
-        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
+      //const user_id = this.props.match.params.username;
+      //const newMoods=this.state;
+        fetch(`${config.API_ENDPOINT}api/moods`,{
           method: 'POST',
           body: JSON.stringify(newMoods),
            headers: {

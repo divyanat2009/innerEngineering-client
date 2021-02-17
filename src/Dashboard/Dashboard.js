@@ -27,12 +27,16 @@ class Dashboard extends Component{
                    <Link className="button-link block-link" to={`/daily-form/${this.state.user}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
-                  <Progress/>               
+                  <Progress/>  
+                  {/*<Link className="button-link" to={`/past-care/${this.state.user}`}>Your Past Wellbeing</Link>
+                  <Link className="button-link" to={`/daily-gratitude/${this.state.user}`}>Your Past Gratitudes</Link>
+        <Link className="button-link" to={`/goal-form/${this.state.user}`}>Set your Goals</Link>*/}
+
                   <ButtonRow
                      links ={
                         [{'/past-care/${this.state.user}':'Your Past Wellbeing'},{'/past-gratitude/${this.state.user}':'Your Past Gratitudes'},{'/goal-form/${this.state.user}':'Set Your Goals'}]
                         }
-                  />
+                      />
                 </main>
             </div>
         );

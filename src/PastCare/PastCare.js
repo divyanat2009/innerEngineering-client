@@ -7,11 +7,20 @@ import Nav from '../Nav/Nav.js';
 
 class PastCare extends Component{
     static contextType = IEContext;
+    state = {
+        user:"",        
+    }
+    componentDidMount() {
+      const user = this.props.match.params.username;
+      this.setState({
+        user : user
+      })
+    } 
     render(){
         return(
             <div className="past-care">
                 <header>
-                <Nav pageType={'interior'}/>
+                <Nav pageType={'interior'} user={this.state.user}/>
                   <h2>Your Well-Being Entries</h2>
                 </header>
                 <main>
@@ -19,7 +28,7 @@ class PastCare extends Component{
                     <EntryList typeOfResults = {'selfcares'}/> 
                     <ButtonRow
                         links ={
-                               [{'/dashboard/:username':'Your Dashboard'},{'/daily-form/:username':'Today\'s Wellbeing & Gratitude'},{'/past-gratitude/:username':'Your Past Gratitudes'},{'/goal-form/:username':'Set Your Goals'}]
+                               [{'/dashboard/${this.state.user}':'Your Dashboard'},{'/daily-form/${this.state.user}':'Today\'s Wellbeing & Gratitude'},{'/past-gratitude/${this.state.user}':'Your Past Gratitudes'},{'/goal-form/${this.state.user}':'Set Your Goals'}]
                                }
                     />                       
                 </main>
