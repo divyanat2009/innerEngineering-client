@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import IEContext from '../IEContext';
 import { Link } from 'react-router-dom';
-import EntryItem from '../EntryItem/EntryItem';
+//import EntryItem from '../EntryItem/EntryItem';
 
 class ActivityList extends Component{
     static contextType = IEContext;
@@ -12,10 +12,10 @@ class ActivityList extends Component{
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
-         linkURL = '/past-care/${this.state.user}'
+         linkURL = `/past-care/${this.state.user}`
         }
         else if(this.props.typePage ==='gratitudes'){
-            linkURL = '/past-gratitude/${this.state.user}'
+            linkURL = `/past-gratitude/${this.state.user}`
            }
        
            let results = this.props.list;

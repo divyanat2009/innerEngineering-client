@@ -549,10 +549,10 @@ handleClickCancel = () => {
              </div>
             </form>
             <ButtonRow
-                links ={[{'/dashboard/${this.state.user}':'Your Dashboard'},
-                         {'/past-care/:username':'Your Past Wellbeing'},
-                         {'/past-gratitude/:username':'Your Past Gratitudes'},
-                         {'/goal-form/${this.state.user}':'Set Your Goals'}]}
+                links ={[{[`/dashboard/${this.state.user}`]:'Your Dashboard'},
+                         {[`/past-care/${this.state.user}`]:'Your Past Wellbeing'},
+                         {[`/past-gratitude/${this.state.user}`]:'Your Past Gratitudes'},
+                         {[`/goal-form/${this.state.user}`]:'Set Your Goals'}]}
             />    
         </section>
         );

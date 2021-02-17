@@ -38,7 +38,7 @@ class GoalList extends Component{
                             </li>)
                         }                 
                     </ul>
-                    <Link className="button-link" to={'/goal-form/${this.state.user}'}>Update</Link>
+                    <Link className="button-link" to={`/goal-form/${this.state.user}`}>Update</Link>
                 </main>
             </section>
         );
