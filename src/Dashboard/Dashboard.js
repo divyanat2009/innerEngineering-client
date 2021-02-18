@@ -11,7 +11,7 @@ class Dashboard extends Component{
         user:"",        
     }
     componentDidMount() {
-      const user = this.props.match.params.username;
+      const user = this.props.match.params.id;
       this.setState({
         user : user
       })

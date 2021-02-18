@@ -30,15 +30,10 @@ class GoalForm extends Component{
              value:0,
              touched:false,
          },    
-         user:"",            
+         user_id:this.props.match.params.id,            
       }
   }
-  componentDidMount() {
-    const user = this.props.match.params.username;
-    this.setState({
-      user : user
-    });
-  }
+ 
  
   updateCare=(number, inputId)=>{
      if(inputId==='emotional')
@@ -70,6 +65,7 @@ class GoalForm extends Component{
  handleSubmit=(e)=>{
    e.preventDefault();
    const { emotional, physical, spiritual, energy } = this.state;
+   const user_id= this.props.match.params.id
    const goals = {
          "emotional": emotional.value,
          "spiritual":spiritual.value,
@@ -77,7 +73,7 @@ class GoalForm extends Component{
          "energy":energy.value
    };
    
-   fetch(`${config.API_ENDPOINT}api/goals`,{
+   fetch(`${config.API_ENDPOINT}api/goals/`+user_id,{
      method: 'POST',
      body: JSON.stringify(goals),
       headers: {
@@ -97,21 +93,21 @@ class GoalForm extends Component{
    })
    .then(data => {
        this.state.updateGoals(data);
-       this.props.history.push(`/dashboard/${this.state.user}`);
+       this.props.history.push(`/dashboard/${this.state.user_id}`);
    })
    .catch(error => {
      this.setState({ error })
    })
  }
  handleClickCancel = () => {
-     this.props.history.push(`/dashboard/${this.state.user}`)
+     this.props.history.push(`/dashboard/${this.state.user_id}`)
  };
  
   render(){
       return(
         <div className="goalform">
             <header>
-               <Nav pageType={'interior'} user={this.state.user}/>
+               <Nav pageType={'interior'} user={this.state.user_id}/>
                   <h2>Your Goals</h2>
             </header>
             <main>
@@ -188,7 +184,7 @@ class GoalForm extends Component{
                     </form>
                     <ButtonRow
                         links ={
-                               [{[`/dashboard/${this.state.user}`]:'Your Dashboard'},{[`/daily-form/${this.state.user}`]:'Daily Form'},{[`/past-care/${this.state.user}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user}`]:'Your Past Gratitudes'}]
+                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Daily Form'},{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'}]
                                }
                     />    
                 </main>

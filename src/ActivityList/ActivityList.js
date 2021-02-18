@@ -6,19 +6,20 @@ import { Link } from 'react-router-dom';
 class ActivityList extends Component{
     static contextType = IEContext;
     state = {
-      user: ""
+      user_id: ""
     }   
     render(){
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
-         linkURL = `/past-care/${this.state.user}`
+         linkURL = `/past-care/${this.state.user_id}`
         }
         else if(this.props.typePage ==='gratitudes'){
-            linkURL = `/past-gratitude/${this.state.user}`
+            linkURL = `/past-gratitude/${this.state.user_id}`
            }
        
            let results = this.props.list;
+           console.log(results)
            //sorting the results by date and returning the three most recent
            let sortedResults = results;
            if(results && results[0] && results.date_modified){
@@ -27,7 +28,7 @@ class ActivityList extends Component{
                );
            }
            let topThree = [ sortedResults[0], sortedResults[1], sortedResults[2]];
-   
+           console.log(topThree)
            //version 2
            let randomThree = [];
            if(results && results[0] && results.date_modified){

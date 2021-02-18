@@ -9,9 +9,10 @@ class EntryItem extends Component{
     render(){   
         
         const {content, type, rating, typeOfResults, date_formatted } = this.props;
+        
         let listItem = '';
         if(typeOfResults==='selfcares'){
-            listItem = (<li key={this.props.selfcare_id} className="result-item">
+            listItem = (<li key={this.context.selfcare_id} className="result-item">
             <span className="result-content">{content}</span>
             <span className="result-date">{date_formatted}</span>
             <span className="result-type">Type : {type}</span>
@@ -20,7 +21,7 @@ class EntryItem extends Component{
             );
         }
         else if(typeOfResults === 'gratitudes'){
-            listItem = (<li key={this.props.gratitude_id} className="result-item">
+            listItem = (<li key={this.context.gratitude_id} className="result-item">
             <span className="result-content">{content}</span>
             <span className="result-date">{date_formatted}</span>
             </li> 

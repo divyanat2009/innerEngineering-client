@@ -321,11 +321,11 @@ componentDidMount(){
         <IEContext.Provider value={contextValue}>
        
         <Route exact path='/' component={Home}/> 
-        <Route exact path='/dashboard/:username' component={Dashboard} /> 
-        <Route exact path='/daily-form/:username' component={DailyForm}/> 
-        <Route exact path='/past-care/:username' component={PastCare}/> 
-        <Route exact path='/past-gratitude/:username' component={PastGratitude}/> 
-        <Route exact path='/goal-form/:username' component={GoalForm}/> 
+        <Route exact path='/dashboard/:id' component={Dashboard} /> 
+        <Route exact path='/daily-form/:id' component={DailyForm}/> 
+        <Route exact path='/past-care/:id' component={PastCare}/> 
+        <Route exact path='/past-gratitude/:id' component={PastGratitude}/> 
+        <Route exact path='/goal-form/:id' component={GoalForm}/> 
         <Route exact path='/user-signup' component={UserSignUp}/>
         <Route exact path='/user-signin' component={UserSignIn}/>         
         

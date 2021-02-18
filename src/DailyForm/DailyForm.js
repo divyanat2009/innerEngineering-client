@@ -76,18 +76,13 @@ constructor(props){
             touched:false
         },
         error:null,
-        user: "",
+        user_id: this.props.match.params.id,
         addGratitude:[],
         addMoods:[],
         addSelfCare:[]
     };
 }
-componentDidMount() {
-  const user = this.props.match.params.username;
-  this.setState({
-    user : user
-  })
-} 
+
 updateGratitude=(gratitude, inputId)=>{
 if(inputId==='gratitude1')
   {
@@ -185,15 +180,16 @@ updateEnergy=(energyLevel)=>{
 handleSubmit = e =>{
     e.preventDefault();
     const { gratitude1, gratitude2, gratitude3, activity1, activity2, activity3, type1, type2, type3, rating1, rating2, rating3, mood, energy } = this.state;
-    //for now all entries will get same user_id, id, and date    
-    const newuser_id = "2";
+     
+    const user_id = this.props.match.params.id;
+
     //this will be based on the date input    
     //add selfcare
     let newSelfCare=[];
     //1st input field
     if(activity1.value){
       newSelfCare = [{
-        user_id:newuser_id,
+        //user_id:user_id,
         content:activity1.value,
         type:type1.value,
         rating:rating1.value,
@@ -201,7 +197,7 @@ handleSubmit = e =>{
       //2nd input field
     if(activity2.value){
       const newSelfCare2 = {
-      user_id:newuser_id,
+      //user_id:user_id,
       content:activity2.value,
       type:type2.value,
       rating:rating2.value,
@@ -211,7 +207,7 @@ handleSubmit = e =>{
     //3rd input field
     if(activity3.value){
       const newSelfCare3 = {
-      user_id:newuser_id,
+      //user_id:user_id,
       content:activity3.value,
       type:type3.value,
       rating:rating3.value,
@@ -223,19 +219,19 @@ handleSubmit = e =>{
     let newGratitude=[];
     if(gratitude1.value){
       newGratitude = [{
-      user_id:newuser_id,
+      //user_id:user_id,
       content:gratitude1.value,
       }]
     if(gratitude2.value){
       const newGratitude2 = {
-        user_id:newuser_id,
+        //user_id:user_id,
         content:gratitude2.value,
       };
       newGratitude = [...newGratitude, newGratitude2];
     };
     if(gratitude3.value){
       const newGratitude3 = {
-      user_id:newuser_id,
+      //user_id:user_id,
       content:gratitude3.value,
     }
       newGratitude = [...newGratitude, newGratitude3];
@@ -251,10 +247,9 @@ handleSubmit = e =>{
         };
   // this.context.addMoods(newMoods);
   };
-  if(newGratitude.length !== 0){   
-    //const user_id = this.props.match.params.username; 
-    //const newGratitude=this.state;
-  fetch(`${config.API_ENDPOINT}api/gratitudes`,{
+  if(newGratitude.length !== 0){        
+  
+  fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
     method: 'POST',
     body: JSON.stringify(newGratitude),
     headers: {
@@ -284,7 +279,7 @@ handleSubmit = e =>{
   if(newSelfCare.length !== 0){    
     //const user_id = this.props.match.params.username;
     //const newSelfCare=this.state;
-    fetch(`${config.API_ENDPOINT}api/selfcares`,{
+    fetch(`${config.API_ENDPOINT}api/selfcares/`+user_id,{
       method: 'POST',
       body: JSON.stringify(newSelfCare),
       headers: {
@@ -313,7 +308,7 @@ handleSubmit = e =>{
     if(newMoods){      
       //const user_id = this.props.match.params.username;
       //const newMoods=this.state;
-        fetch(`${config.API_ENDPOINT}api/moods`,{
+        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
           method: 'POST',
           body: JSON.stringify(newMoods),
            headers: {
@@ -341,7 +336,7 @@ handleSubmit = e =>{
         });
       }//end if newMood
       
-  this.props.history.push(`/dashboard/${this.state.user}`);
+  this.props.history.push(`/dashboard/${this.state.user_id}`);
 }//end of handleSubmit
 
 validateActivityInputs(){
@@ -381,7 +376,7 @@ validateTypeRating(){
 }
 
 handleClickCancel = () => {
-    this.props.history.push('/dashboard/:username');
+    this.props.history.push(`/dashboard/${this.state.user_id}`);
 };
 
     render(){
@@ -391,7 +386,7 @@ handleClickCancel = () => {
         return(
             <section className="dailyform">
                 <header>
-                    <Nav pageType={'interior'} user={this.state.user}/>
+                    <Nav pageType={'interior'} user_id={this.state.user_id}/>
                     <h2>Today's Wellbeing and Gratitude</h2>
                 </header>
                 <form className="daily-form" onSubmit={e=>this.handleSubmit(e)}>
@@ -508,7 +503,7 @@ handleClickCancel = () => {
                 </div>  
               
                 <fieldset className="mood-input">
-                    <legend>How I am feeling today</legend>
+                    <legend>How do I feel today?</legend>
                     <div>
                         <label htmlFor="mood">My Mood</label>
                         <select id="mood"
@@ -549,10 +544,10 @@ handleClickCancel = () => {
              </div>
             </form>
             <ButtonRow
-                links ={[{[`/dashboard/${this.state.user}`]:'Your Dashboard'},
-                         {[`/past-care/${this.state.user}`]:'Your Past Wellbeing'},
-                         {[`/past-gratitude/${this.state.user}`]:'Your Past Gratitudes'},
-                         {[`/goal-form/${this.state.user}`]:'Set Your Goals'}]}
+                links ={[{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},
+                         {[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},
+                         {[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},
+                         {[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]}
             />    
         </section>
         );

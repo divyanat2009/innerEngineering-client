@@ -26,7 +26,7 @@ class UserSignIn extends Component {
           TokenService.saveAuthToken(res.authToken)
         
 
-          this.props.history.push('/dashboard/'+res.username);           
+          this.props.history.push('/dashboard/'+res.id);           
         })
         .catch(res => {
           this.setState({ error: res.error })
@@ -48,6 +48,12 @@ class UserSignIn extends Component {
                     <div className="form-field-group">
                         <label htmlFor="password">Password</label>
                         <input placeholder="*******" type="password" name='password' id='password' autoComplete="new-password" required/>
+                    </div>
+                    <div className="form-field-group">
+                    <p>Demo Credentials:<br></br>
+                      username:jondoe1<br></br>
+                      password:Passw0rd!
+                    </p>
                     </div>
                     <button type="submit">SignIn</button>                    
                    </form> 

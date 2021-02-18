@@ -20,12 +20,12 @@ class MostRecent extends Component{
                 <main>
                     <ActivityList
                        typePage={'selfcares'}
-                       list = {this.context.selfcares}
+                       list = {this.state.selfcares}
                        listHeading = {'Your Most Recent Wellbeing Activities'}
                        random = {false} />
                     <ActivityList
                        typePage={'gratitudes'}
-                       list = {this.context.gratitudes}
+                       list = {this.state.gratitudes}
                        listHeading = {`Your Most Recent Gratitudes`} 
                        random = {true}/>
                      <GoalList/>
