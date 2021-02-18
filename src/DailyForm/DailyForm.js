@@ -14,6 +14,7 @@ static contextType = IEContext;
 
 constructor(props){
     super(props);
+    console.log("id"+this.props.match.params.id)
     this.state={
         date:{
             value:"1",
@@ -185,15 +186,15 @@ handleSubmit = e =>{
 
     //this will be based on the date input    
     //add selfcare
-    let newSelfCare=[];
+    let newSelfCare={};
     //1st input field
     if(activity1.value){
-      newSelfCare = [{
+      newSelfCare = {
         //user_id:user_id,
         content:activity1.value,
         type:type1.value,
         rating:rating1.value,
-      }]
+      }
       //2nd input field
     if(activity2.value){
       const newSelfCare2 = {
@@ -216,12 +217,12 @@ handleSubmit = e =>{
     };
   };
   //add gratitude
-    let newGratitude=[];
+    let newGratitude={};
     if(gratitude1.value){
-      newGratitude = [{
+      newGratitude = {
       //user_id:user_id,
       content:gratitude1.value,
-      }]
+      }
     if(gratitude2.value){
       const newGratitude2 = {
         //user_id:user_id,
@@ -269,7 +270,7 @@ handleSubmit = e =>{
       })
       .then(data => {
         let formatedDateData = data.map(obj=>FormatDate(obj));
-        this.state.addGratitude(formatedDateData);
+        this.props.addGratitude(formatedDateData);
       })
       .catch(error => {
         this.setState({ error })
@@ -299,7 +300,7 @@ handleSubmit = e =>{
       })
       .then(data => {
           let formatedDateData = data.map(obj=>FormatDate(obj));
-         this.state.addSelfCare(formatedDateData);
+         this.props.addSelfCare(formatedDateData);
       })
       .catch(error => {
         this.setState({ error });
@@ -329,7 +330,7 @@ handleSubmit = e =>{
         .then(data => {            
             let moodArray = [{data}];
             let formatedDateData = moodArray.map(obj=>FormatDate(obj));
-            this.state.addMoods(formatedDateData);
+            this.props.addMoods(formatedDateData);
         })
         .catch(error => {
           this.setState({ error });

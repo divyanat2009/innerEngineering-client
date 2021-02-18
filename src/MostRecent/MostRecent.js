@@ -11,7 +11,9 @@ class MostRecent extends Component{
          selfcares:[],
          gratitudes:[]
      }
+     
     render(){
+        console.log(this.props)
         return(
             <section className="most-recent">
                 <header>

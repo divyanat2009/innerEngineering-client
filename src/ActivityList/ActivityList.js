@@ -6,9 +6,10 @@ import { Link } from 'react-router-dom';
 class ActivityList extends Component{
     static contextType = IEContext;
     state = {
-      user_id: ""
-    }   
+        user_id: "",
+    }
     render(){
+        console.log(this.props)
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
