@@ -7,13 +7,13 @@ import GoalList from '../GoalList/GoalList';
 class MostRecent extends Component{
     static contextType = IEContext;
      state={
-         user:"",
-         selfcares:[],
-         gratitudes:[]
+         user_id:"",
+         selfcares:{},
+         gratitudes:{}
      }
      
     render(){
-        console.log(this.props)
+        
         return(
             <section className="most-recent">
                 <header>
@@ -21,11 +21,13 @@ class MostRecent extends Component{
                 </header>
                 <main>
                     <ActivityList
+                       user_id={this.props.user_id}
                        typePage={'selfcares'}
                        list = {this.context.selfcares}
                        listHeading = {'Your Most Recent Wellbeing Activities'}
                        random = {false} />
                     <ActivityList
+                       user_id={this.props.user_id}
                        typePage={'gratitudes'}
                        list = {this.context.gratitudes}
                        listHeading = {`Your Most Recent Gratitudes`} 

@@ -7,13 +7,17 @@ import Nav from '../Nav/Nav.js';
 import {Link} from 'react-router-dom';
 
 class Dashboard extends Component{
-    state = {
-        user:"",        
+  constructor(props){
+    super(props);
+    this.state = {
+        user_id:""
     }
+  }
     componentDidMount() {
-      const user = this.props.match.params.id;
+      const user_id = this.props.match.params.id;
+      console.log(user_id)
       this.setState({
-        user : user
+        user_id : user_id
       })
     } 
     
@@ -21,20 +25,16 @@ class Dashboard extends Component{
         return(
             <div className="dashboard">
                 <header>
-                <Nav pageType={'interior'} user={this.state.user}/>
+                <Nav pageType={'interior'} user={this.state.user_id}/>
                     <h2>Your Inner Engineering Dashboard</h2>
                    <RandomQuote/>   
-                   <Link className="button-link block-link" to={`/daily-form/${this.state.user}`}>Today's Wellbeing &amp; Gratitude</Link>                
+                   <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
-                  <Progress/>  
-                  {/*<Link className="button-link" to={`/past-care/${this.state.user}`}>Your Past Wellbeing</Link>
-                  <Link className="button-link" to={`/daily-gratitude/${this.state.user}`}>Your Past Gratitudes</Link>
-        <Link className="button-link" to={`/goal-form/${this.state.user}`}>Set your Goals</Link>*/}
-
+                  <Progress user_id={this.state.user_id}/>  
                   <ButtonRow
                      links ={
-                        [{[`/past-care/${this.state.user}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user}`]:'Set Your Goals'}]
+                        [{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
                         }
                       />
                 </main>

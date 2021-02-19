@@ -23,7 +23,7 @@ module.exports= {
         {
             "id":"2",
             "user_id":"1",
-            "content":"Read a book about Malala Yousafzai",
+            "content":"Read a book",
             "type":"emotional",
             "rating":"5",
             "date":"January 3rd 2021"           
@@ -39,7 +39,7 @@ module.exports= {
         {
             "id":"4",
             "user_id":"1",
-            "content":"Ate a healthy breakfast bowl",
+            "content":"Had a healthy breakfast bowl",
             "type":"food",
             "rating":"5",
             "date":"January 1st 2021"           
@@ -50,13 +50,13 @@ module.exports= {
         {
             "id":"1",
             "user_id":"1",
-            "content":"I kept my cool with the contractor",
+            "content":"The yummy food I had for dinner",
             "date":"January 27th 2021"           
         },
         {
             "id":"2",
             "user_id":"1",
-            "content":"A catch up phone call with Deepa and mom",
+            "content":"A catch up phone call with mom and sis",
             "date":"January 7th 2021"           
         },
         {

@@ -83,7 +83,13 @@ constructor(props){
         addSelfCare:[]
     };
 }
-
+componentDidMount() {
+  const user_id = this.props.match.params.id;
+  console.log(user_id)
+  this.setState({
+    user_id : user_id
+  })
+}
 updateGratitude=(gratitude, inputId)=>{
 if(inputId==='gratitude1')
   {
@@ -181,24 +187,19 @@ updateEnergy=(energyLevel)=>{
 handleSubmit = e =>{
     e.preventDefault();
     const { gratitude1, gratitude2, gratitude3, activity1, activity2, activity3, type1, type2, type3, rating1, rating2, rating3, mood, energy } = this.state;
-     
-    const user_id = this.props.match.params.id;
-
-    //this will be based on the date input    
+    const user_id = this.props.match.params.id;     
     //add selfcare
     let newSelfCare={};
     //1st input field
     if(activity1.value){
-      newSelfCare = {
-        //user_id:user_id,
+      newSelfCare = {        
         content:activity1.value,
         type:type1.value,
         rating:rating1.value,
       }
       //2nd input field
     if(activity2.value){
-      const newSelfCare2 = {
-      //user_id:user_id,
+      const newSelfCare2 = {      
       content:activity2.value,
       type:type2.value,
       rating:rating2.value,
@@ -207,8 +208,7 @@ handleSubmit = e =>{
     };
     //3rd input field
     if(activity3.value){
-      const newSelfCare3 = {
-      //user_id:user_id,
+      const newSelfCare3 = {      
       content:activity3.value,
       type:type3.value,
       rating:rating3.value,
@@ -245,8 +245,7 @@ handleSubmit = e =>{
        newMoods = {
          energy_level:energy.value,
          mood_level:mood.value,
-        };
-  // this.context.addMoods(newMoods);
+        };  
   };
   if(newGratitude.length !== 0){        
   
@@ -270,7 +269,7 @@ handleSubmit = e =>{
       })
       .then(data => {
         let formatedDateData = data.map(obj=>FormatDate(obj));
-        this.props.addGratitude(formatedDateData);
+        this.context.addGratitude(formatedDateData);
       })
       .catch(error => {
         this.setState({ error })
@@ -278,8 +277,6 @@ handleSubmit = e =>{
     }//end of newGratitude
 
   if(newSelfCare.length !== 0){    
-    //const user_id = this.props.match.params.username;
-    //const newSelfCare=this.state;
     fetch(`${config.API_ENDPOINT}api/selfcares/`+user_id,{
       method: 'POST',
       body: JSON.stringify(newSelfCare),
@@ -300,16 +297,14 @@ handleSubmit = e =>{
       })
       .then(data => {
           let formatedDateData = data.map(obj=>FormatDate(obj));
-         this.props.addSelfCare(formatedDateData);
+         this.context.addSelfCare(formatedDateData);
       })
       .catch(error => {
         this.setState({ error });
       });
     }//end if newSC
     if(newMoods){      
-      //const user_id = this.props.match.params.username;
-      //const newMoods=this.state;
-        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
+       fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
           method: 'POST',
           body: JSON.stringify(newMoods),
            headers: {
@@ -330,7 +325,7 @@ handleSubmit = e =>{
         .then(data => {            
             let moodArray = [{data}];
             let formatedDateData = moodArray.map(obj=>FormatDate(obj));
-            this.props.addMoods(formatedDateData);
+            this.context.addMoods(formatedDateData);
         })
         .catch(error => {
           this.setState({ error });

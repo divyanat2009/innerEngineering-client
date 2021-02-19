@@ -5,7 +5,7 @@ import IEContext from '../IEContext';
 
 class EntryItem extends Component{
     static contextType = IEContext;    
-   
+  
     render(){   
         
         const {content, type, rating, typeOfResults, date_formatted } = this.props;
