@@ -30,10 +30,17 @@ class GoalForm extends Component{
              value:0,
              touched:false,
          },    
-         user_id:this.props.match.params.id,            
+         user_id:""       
       }
   }
- 
+  componentDidMount() {      
+    const user_id = this.props.match.params.id;
+    this.context.setUserId(user_id);
+    console.log(user_id)
+    this.setState({
+      user_id : user_id
+    })
+  } 
  
   updateCare=(number, inputId)=>{
      if(inputId==='emotional')
@@ -92,7 +99,7 @@ class GoalForm extends Component{
      return res.json()
    })
    .then(data => {
-       this.state.updateGoals(data);
+       this.context.updateGoals(data);
        this.props.history.push(`/dashboard/${this.state.user_id}`);
    })
    .catch(error => {
@@ -104,6 +111,7 @@ class GoalForm extends Component{
  };
  
   render(){
+    
       return(
         <div className="goalform">
             <header>

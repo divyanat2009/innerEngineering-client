@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import IEContext from '../IEContext';
 
 
 class Nav extends Component{
+    static contextType= IEContext;
     state = {
         isNavHidden:true,
-        user:""
+        user_id:""
+        
 };
+componentDidMount() {      
+    const user_id=this.props.user_id;
+    this.context.setUserId(user_id);    
+    this.setState({
+      user_id : user_id
+    })
+  } 
 
 makeNavVisible=()=>{
   this.setState(prevState => 
@@ -15,6 +25,7 @@ makeNavVisible=()=>{
 }
 
   render(){
+    const user_id=this.props.user_id;  
     let List="";
       if (this.props.pageType === 'interior'){
          List = (
@@ -27,11 +38,11 @@ makeNavVisible=()=>{
                 <h1>Inner Engineering</h1>
                 
                 <ul>
-                    <li><NavLink to={`/dashboard/:id`}>Dashboard</NavLink></li>                    
-                    <li><NavLink to={`/daily-form/:id`}>Daily Form</NavLink></li>
-                    <li><NavLink to={`/past-care/:id`}>Past Wellbeing</NavLink></li>
-                    <li><NavLink to={`/past-gratitude/:id`}>Past Gratitude</NavLink></li>                    
-                    <li><NavLink to={`/goal-form/:id`}>Goals</NavLink></li>
+                    <li><NavLink to={`/dashboard/${user_id}`}>Dashboard</NavLink></li>                    
+                    <li><NavLink to={`/daily-form/${user_id}`}>Daily Form</NavLink></li>
+                    <li><NavLink to={`/past-care/${user_id}`}>Past Wellbeing</NavLink></li>
+                    <li><NavLink to={`/past-gratitude/${user_id}`}>Past Gratitude</NavLink></li>                    
+                    <li><NavLink to={`/goal-form/${user_id}`}>Goals</NavLink></li>
                     <li><NavLink to={`/`}>LogOut</NavLink></li>
                 </ul>
             </nav>

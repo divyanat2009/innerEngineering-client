@@ -5,11 +5,9 @@ import '../_styles/GoalList.css';
 
 class GoalList extends Component{
     static contextType = IEContext;   
-    state={
-        user_id:""
-    }
+    
     render(){
-        
+        const user_id=this.props.user_id;
         let goalsObj = this.context.goals;       
         //removing any empty values from being displayed
         let newObj = Object.entries(goalsObj).reduce(
@@ -37,7 +35,7 @@ class GoalList extends Component{
                             </li>)
                         }                 
                     </ul>
-                    <Link className="button-link" to={'/goal-form'}>Update</Link>
+                    <Link className="button-link" to={`/goal-form/${user_id}`}>Update</Link>
                 </main>
             </section>
         );

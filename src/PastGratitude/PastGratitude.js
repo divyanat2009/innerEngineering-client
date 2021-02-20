@@ -8,19 +8,24 @@ import Nav from '../Nav/Nav.js';
 class PastGratitude extends Component{
     static contextType = IEContext;
     state = {
-        user:"",        
+        user_id:""
     }
-    componentDidMount() {
-      const user = this.props.match.params.id;
+  
+    componentDidMount() {      
+      const user_id = this.props.match.params.id;
+      this.context.setUserId(user_id);
+      console.log(user_id)
       this.setState({
-        user : user
+        user_id : user_id
       })
     } 
+  
     render(){
+        
         return(
             <div className="past-gratitude">
                 <header>
-                <Nav pageType={'interior'} user={this.state.user}/>
+                <Nav pageType={'interior'} user_id={this.state.user_id}/>
                     <h2>Your Gratitude Entries</h2>
                 </header>
                 <main>
@@ -29,7 +34,7 @@ class PastGratitude extends Component{
                     <EntryList typeOfResults = {'gratitudes'} />    
                     <ButtonRow
                         links ={
-                               [{[`/dashboard/${this.state.user}`]:'Your Dashboard'},{[`/daily-form/${this.state.user}`]:'Daily Form'},{[`/past-care/${this.state.user}`]:'Your Past Wellbeing'},{[`/goal-form/${this.state.user}`]:'Set Your Goals'}]
+                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Daily Form'},{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
                                }
                     />               
                 </main>

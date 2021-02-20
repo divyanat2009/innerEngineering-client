@@ -1,44 +1,20 @@
 import React from 'react';
 
 const IEContext = React.createContext({
-      selfcares:[{
+      selfcares:{
         "gratitude_id":"1",
         "user_id":"1",
         "content":"A catch up phone call with mom",
         "date_modified":"January 27th 2021",
         "type":"emotional",
         "rating":"5",           
-    },{
-      "gratitude_id":"1",
-      "user_id":"1",
-      "content":"A catch up phone call with Deepa",
-      "date_modified":"January 27th 2021",
-      "type":"emotional",
-      "rating":"5",           
-      },{
-        "gratitude_id":"1",
-        "user_id":"1",
-        "content":"A catch up phone call with mom",
-        "date_modified":"January 7th 2020",
-        "type":"emotional",
-        "rating":"5",           
-      }],
-      gratitudes:[ {
+    },
+      gratitudes:{
         "gratitude_id":"1",
         "user_id":"1",
         "content":"A catch up phone call with mom",
         "date_modified":"January 7th 2021"           
-     },{
-      "gratitude_id":"1",
-      "user_id":"1",
-      "content":"A catch up phone call with mom",
-      "date_modified":"January 7th 2021"           
-     },{
-    "gratitude_id":"1",
-    "user_id":"1",
-    "content":"A catch up phone call with mom",
-    "date_modified":"January 7th 2021"           
-    }],
+     },
       goals:{
         "emotional": "4",
         "spiritual":"7",
@@ -46,18 +22,18 @@ const IEContext = React.createContext({
         "intellectual":"7"
     },
      
-      quotes:[{
+      quotes:{
         "id":"1",
         "content":"The grass isn't greener on the other side of the fence, the grass is greener where you water it",
         "author": "anonymous",
-     }],
-      moods:[{
+     },
+      moods:{
         "id":"1",
         "user_id":"1",
         "mood_level":"4",
         "energy_level":"5",
         "date_modified":"2021-02-14T19:10:27.090Z",   
-    }],
+    },
       current_gratitude_results_page:1,
       current_selfcares_results_page:1,
       addSelfCare:()=>{},
@@ -72,7 +48,9 @@ const IEContext = React.createContext({
       updateTypeSelected:()=>{},
       updateDateSelected:()=>{},
       updateRatingSelected:()=>{},
-      updateNumberofTotalResults:()=>{},     
+      updateNumberofTotalResults:()=>{}, 
+      setUserId:()=>{},
+      user_id:""    
      
 });
 

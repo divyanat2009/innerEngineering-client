@@ -23,7 +23,7 @@ class App extends Component{
     this.state={
       users:data.users,
       username:"",
-      userId:"",
+      user_id:"",
       selfcares:data.selfcare,
       gratitudes:data.gratitude,
       goals:data.goals,
@@ -86,32 +86,38 @@ updateRatingSelected=(typeOfPage, ratingSelected)=>{
  
 addSelfCare=(newSelfCare)=>{
   this.setState({
-    selfcares: [...this.state.selfcares, ...newSelfCare]
+    selfcares: newSelfCare
     });  
+    console.log(newSelfCare)
 };
 
 addGratitude=(newGratitude)=>{  
   this.setState({
-    gratitudes: [...this.state.gratitudes, ...newGratitude]
+    gratitudes: newGratitude
   });
+  console.log(newGratitude);
 };
 
 addMoods=(newMoods)=>{
   this.setState({
-    moods:[...this.state.moods, ...newMoods]
+    moods:newMoods
   });
+  console.log(newMoods)
 }
 
 updateGoals=(newgoals)=>{
   this.setState({
     goals:newgoals
   });
+  console.log(newgoals)
 }
 setUserId=(id)=>{
   this.setState({
-    userId:id
+    user_id:id
   })
+  console.log(id);
 }
+
 
 componentDidMount(){  
   this.setState({
@@ -143,7 +149,7 @@ componentDidMount(){
       });
     });  
    
-    fetch(`${config.API_ENDPOINT}api/users/${this.state.userId}`,{
+    fetch(`${config.API_ENDPOINT}api/users/${this.state.user_id}`,{
       method:'GET',
       header:{
         'content-type':'application/json',       
@@ -175,6 +181,7 @@ componentDidMount(){
     },
   })
   .then(res=>{
+    console.log("fetching gratitudes")
     if(!res.ok){
       throw new Error('Something went wrong, please try again later');
     }

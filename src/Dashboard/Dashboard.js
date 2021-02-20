@@ -5,16 +5,19 @@ import RandomQuote from '../RandomQuote/RandomQuote.js';
 import '../_styles/Dashboard.css';
 import Nav from '../Nav/Nav.js';
 import {Link} from 'react-router-dom';
+import IEContext from '../IEContext';
 
 class Dashboard extends Component{
+  static contextType = IEContext;
   constructor(props){
     super(props);
     this.state = {
         user_id:""
     }
   }
-    componentDidMount() {
+    componentDidMount() {      
       const user_id = this.props.match.params.id;
+      this.context.setUserId(user_id);
       console.log(user_id)
       this.setState({
         user_id : user_id
@@ -25,7 +28,7 @@ class Dashboard extends Component{
         return(
             <div className="dashboard">
                 <header>
-                <Nav pageType={'interior'} user={this.state.user_id}/>
+                <Nav pageType={'interior'} user_id={this.state.user_id}/>
                     <h2>Your Inner Engineering Dashboard</h2>
                    <RandomQuote/>   
                    <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                

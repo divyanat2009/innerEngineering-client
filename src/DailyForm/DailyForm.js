@@ -24,50 +24,50 @@ constructor(props){
             value:"",
             touched:false
         },
-        gratitude2:{
-            value:"",
-            touched:false
-        },
-        gratitude3:{
-            value:"",
-            touched:false
-        },
+        // gratitude2:{
+        //     value:"",
+        //     touched:false
+        // },
+        // gratitude3:{
+        //     value:"",
+        //     touched:false
+        // },
         activity1:{
             value:"",
             touched:false
         },
-        activity2:{
-            value:"",
-            touched:false
-        },
-        activity3:{
-            value:"",
-            touched:false
-        },
+        // activity2:{
+        //     value:"",
+        //     touched:false
+        // },
+        // activity3:{
+        //     value:"",
+        //     touched:false
+        // },
         type1:{
             value:"",
             touched:false
         },
-        type2:{
-            value:"",
-            touched:false
-        },
-        type3:{
-            value:"",
-            touched:false
-        },
+        // type2:{
+        //     value:"",
+        //     touched:false
+        // },
+        // type3:{
+        //     value:"",
+        //     touched:false
+        // },
         rating1:{
             value:"",
             touched:false
         },
-        rating2:{
-            value:"",
-            touched:false
-        },
-        rating3:{
-            value:"",
-            touched:false
-        },
+        // rating2:{
+        //     value:"",
+        //     touched:false
+        // },
+        // rating3:{
+        //     value:"",
+        //     touched:false
+        // },
         mood:{
             value:"",
             touched:false
@@ -77,14 +77,12 @@ constructor(props){
             touched:false
         },
         error:null,
-        user_id: this.props.match.params.id,
-        addGratitude:[],
-        addMoods:[],
-        addSelfCare:[]
+        user_id: this.props.match.params.id,       
     };
 }
 componentDidMount() {
   const user_id = this.props.match.params.id;
+  this.context.setUserId(user_id);
   console.log(user_id)
   this.setState({
     user_id : user_id
@@ -97,18 +95,18 @@ if(inputId==='gratitude1')
       gratitude1:{value: gratitude, touched: true}
     });
   };
-  if(inputId==='gratitude2')
-  {
-    this.setState({
-      gratitude2:{value: gratitude, touched: true}
-    });
-  };
-  if(inputId==='gratitude3')
-  {
-    this.setState({
-      gratitude3:{value: gratitude, touched: true}
-    }
-  )};
+  // if(inputId==='gratitude2')
+  // {
+  //   this.setState({
+  //     gratitude2:{value: gratitude, touched: true}
+  //   });
+  // };
+  // if(inputId==='gratitude3')
+  // {
+  //   this.setState({
+  //     gratitude3:{value: gratitude, touched: true}
+  //   }
+  // )};
 }
 
 updateActivities=(activity, inputId)=>{
@@ -118,18 +116,18 @@ updateActivities=(activity, inputId)=>{
           activity1:{value: activity, touched: true}
       }
     )};
-    if(inputId==='activity2')
-      {
-        this.setState({
-          activity2:{value: activity, touched: true}
-        });
-      };
-    if(inputId==='activity3')
-      {
-        this.setState({
-          activity3:{value: activity, touched: true}
-        }
-      )};
+    // if(inputId==='activity2')
+    //   {
+    //     this.setState({
+    //       activity2:{value: activity, touched: true}
+    //     });
+    //   };
+    // if(inputId==='activity3')
+    //   {
+    //     this.setState({
+    //       activity3:{value: activity, touched: true}
+    //     }
+    //   )};
 }
 updateActivityType=(type, inputId)=>{
     if(inputId==='type1')
@@ -138,18 +136,18 @@ updateActivityType=(type, inputId)=>{
           type1:{value: type, touched: true}
         }
     )};
-    if(inputId==='type2')
-      {
-        this.setState({
-          type2:{value: type, touched: true}
-       });
-    };
-      if(inputId==='type3')
-      {
-        this.setState({
-          type3:{value: type, touched: true}
-        }
-      )};
+    // if(inputId==='type2')
+    //   {
+    //     this.setState({
+    //       type2:{value: type, touched: true}
+    //    });
+    // };
+    //   if(inputId==='type3')
+    //   {
+    //     this.setState({
+    //       type3:{value: type, touched: true}
+    //     }
+    //   )};
 }
 updateActivityRating=(rating, inputId)=>{
     if(inputId==='rating1')
@@ -158,18 +156,18 @@ updateActivityRating=(rating, inputId)=>{
           rating1:{value: rating, touched: true}
         });
       };
-      if(inputId==='rating2')
-      {
-        this.setState({
-          rating2:{value: rating, touched: true}
-        });
-      };
-      if(inputId==='rating3')
-      {
-        this.setState({
-          rating3:{value: rating, touched: true}
-        });
-      };
+      // if(inputId==='rating2')
+      // {
+      //   this.setState({
+      //     rating2:{value: rating, touched: true}
+      //   });
+      // };
+      // if(inputId==='rating3')
+      // {
+      //   this.setState({
+      //     rating3:{value: rating, touched: true}
+      //   });
+      // };
 }
 
 updateMood=(moodLevel)=>{
@@ -187,66 +185,72 @@ updateEnergy=(energyLevel)=>{
 handleSubmit = e =>{
     e.preventDefault();
     const { gratitude1, gratitude2, gratitude3, activity1, activity2, activity3, type1, type2, type3, rating1, rating2, rating3, mood, energy } = this.state;
-    const user_id = this.props.match.params.id;     
+    const user_id = this.props.match.params.id;    
+    console.log(user_id) 
     //add selfcare
-    let newSelfCare={};
+    //let newSelfCare={};
     //1st input field
-    if(activity1.value){
-      newSelfCare = {        
+   // if(activity1.value){
+      const newSelfCare = {        
+        user_id:user_id,
         content:activity1.value,
         type:type1.value,
         rating:rating1.value,
       }
       //2nd input field
-    if(activity2.value){
-      const newSelfCare2 = {      
-      content:activity2.value,
-      type:type2.value,
-      rating:rating2.value,
-      }
-      newSelfCare = [...newSelfCare, newSelfCare2];
-    };
-    //3rd input field
-    if(activity3.value){
-      const newSelfCare3 = {      
-      content:activity3.value,
-      type:type3.value,
-      rating:rating3.value,
-      }
-      newSelfCare = [...newSelfCare, newSelfCare3];
-    };
-  };
+    // if(activity2.value){
+    //   const newSelfCare2 = {    
+    //     user_id:user_id,    
+    //     content:activity2.value,
+    //     type:type2.value,
+    //     rating:rating2.value,
+    //   }
+    //   newSelfCare = [...newSelfCare, newSelfCare2];
+    // };
+    // //3rd input field
+    // if(activity3.value){
+    //   const newSelfCare3 = {    
+    //     user_id:user_id,     
+    //   content:activity3.value,
+    //   type:type3.value,
+    //   rating:rating3.value,
+    //   }
+    //   newSelfCare = [...newSelfCare, newSelfCare3];
+    // };
+  //};
   //add gratitude
-    let newGratitude={};
-    if(gratitude1.value){
-      newGratitude = {
-      //user_id:user_id,
+    //let newGratitude={};
+    //if(gratitude1.value){
+      const newGratitude = {
+      user_id:user_id,
       content:gratitude1.value,
       }
-    if(gratitude2.value){
-      const newGratitude2 = {
-        //user_id:user_id,
-        content:gratitude2.value,
-      };
-      newGratitude = [...newGratitude, newGratitude2];
-    };
-    if(gratitude3.value){
-      const newGratitude3 = {
-      //user_id:user_id,
-      content:gratitude3.value,
-    }
-      newGratitude = [...newGratitude, newGratitude3];
-  };
+    // if(gratitude2.value){
+    //   const newGratitude2 = {
+    //     user_id:user_id,
+    //     content:gratitude2.value,
+    //   };
+    //   newGratitude = [...newGratitude, newGratitude2];
+    // };
+    // if(gratitude3.value){
+    //   const newGratitude3 = {
+    //   user_id:user_id,
+    //   content:gratitude3.value,
+    // }
+    //   newGratitude = [...newGratitude, newGratitude3];
+  //};
     
-};
+//};
  //add energy and mood
-  let newMoods={};
-    if(energy.value && mood.value){
-       newMoods = {
+  //let newMoods={};
+  //  if(energy.value && mood.value){
+      const newMoods = {
+         user_id:user_id, 
          energy_level:energy.value,
          mood_level:mood.value,
         };  
-  };
+        console.log(newMoods);
+  //};
   if(newGratitude.length !== 0){        
   
   fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
@@ -258,6 +262,7 @@ handleSubmit = e =>{
     },
   })
     .then(res => {
+      console.log(res);
        if (!res.ok) {
        // get the error message from the response,
          return res.json().then(error => {
@@ -268,6 +273,7 @@ handleSubmit = e =>{
         return res.json();
       })
       .then(data => {
+        console.log(data);
         let formatedDateData = data.map(obj=>FormatDate(obj));
         this.context.addGratitude(formatedDateData);
       })
@@ -335,49 +341,49 @@ handleSubmit = e =>{
   this.props.history.push(`/dashboard/${this.state.user_id}`);
 }//end of handleSubmit
 
-validateActivityInputs(){
-    if(
-      (this.state.activity2.value && !this.state.activity1.value)|| 
-      (this.state.activity3.value && !this.state.activity2.value)
-      ){
-        return "Please fill out the fields in order from top to bottom";
-    };
-}
+// validateActivityInputs(){
+//     if(
+//       (this.state.activity2.value && !this.state.activity1.value)|| 
+//       (this.state.activity3.value && !this.state.activity2.value)
+//       ){
+//         return "Please fill out the fields in order from top to bottom";
+//     };
+// }
 
-validateGratitudeInputs(){
-    if(
-      (this.state.gratitude2.value && !this.state.gratitude1.value)||
-       (this.state.gratitude3.value && !this.state.gratitude2.value)
-      ){
-        return "Please fill out the fields in order from top to bottom";
-    };
-}
+// validateGratitudeInputs(){
+//     if(
+//       (this.state.gratitude2.value && !this.state.gratitude1.value)||
+//        (this.state.gratitude3.value && !this.state.gratitude2.value)
+//       ){
+//         return "Please fill out the fields in order from top to bottom";
+//     };
+// }
 
-validateTypeRating(){
-    if(this.state.activity1.value){
-        if(!this.state.type1.value || !this.state.rating1.value){
-            return "Please choose a type and rating for your activity";
-        };
-    }
-    if(this.state.activity2.value){
-        if(!this.state.type2.value || !this.state.rating2.value){
-            return "Please choose a type and rating for your activity";
-        };
-    }
-    if(this.state.activity3.value){
-        if(!this.state.type3.value || !this.state.rating3.value){
-            return "Please choose a type and rating for your activity";
-        };
-    };
-}
+// validateTypeRating(){
+//     if(this.state.activity1.value){
+//         if(!this.state.type1.value || !this.state.rating1.value){
+//             return "Please choose a type and rating for your activity";
+//         };
+//     }
+//     if(this.state.activity2.value){
+//         if(!this.state.type2.value || !this.state.rating2.value){
+//             return "Please choose a type and rating for your activity";
+//         };
+//     }
+//     if(this.state.activity3.value){
+//         if(!this.state.type3.value || !this.state.rating3.value){
+//             return "Please choose a type and rating for your activity";
+//         };
+//     };
+// }
 
 handleClickCancel = () => {
     this.props.history.push(`/dashboard/${this.state.user_id}`);
 };
 
     render(){
-        const gratitudeError = this.validateGratitudeInputs();
-        const activityError = this.validateActivityInputs();
+        // const gratitudeError = this.validateGratitudeInputs();
+        // const activityError = this.validateActivityInputs();
         
         return(
             <section className="dailyform">
@@ -391,14 +397,15 @@ handleClickCancel = () => {
                         <legend>I am grateful for...</legend>
                         <input placeholder="a morning walk" type="text" name="gratitude1"   id="gratitude1"
                         onChange={e => this.updateGratitude(e.target.value, e.target.id)}/>
-                        <input placeholder="catching up with mom in a Zoom chat" type="text" name="gratitude2" id="gratitude2"
+                        {/* <input placeholder="catching up with mom in a Zoom chat" type="text" name="gratitude2" id="gratitude2"
                         disabled={!this.state.gratitude1.touched}
                         onChange={e => this.updateGratitude(e.target.value, e.target.id)}/>
                         <input placeholder="watching Neel grow up" type="text" name="gratitude3" id="gratitude3"
                         disabled={!this.state.gratitude2.touched}
-                        onChange={e => this.updateGratitude(e.target.value, e.target.id)}/>
-                        {this.validateGratitudeInputs() && (<ValidationError message={gratitudeError} />
-        )}
+                        onChange={e => this.updateGratitude(e.target.value, e.target.id)}/> */}
+                        {/*{this.validateGratitudeInputs() && (<ValidationError message={gratitudeError}/> 
+                        
+        )}*/}
                     </fieldset>
                    
                     <div className="activity-input-area">
@@ -431,7 +438,7 @@ handleClickCancel = () => {
                                 </select> 
                             </div>    
                         </fieldset>                  
-                    <fieldset>
+                    {/* <fieldset>
                        <legend>Today I...</legend>
                             <div className="activity-input">
                                 <div className="content-input">
@@ -495,7 +502,7 @@ handleClickCancel = () => {
                                 </select>
                             </div>                       
                     </fieldset>  
-                    {this.validateActivityInputs() && (<ValidationError message={activityError} />)}
+                    {this.validateActivityInputs() && (<ValidationError message={activityError} />)} */}
                 </div>  
               
                 <fieldset className="mood-input">
@@ -528,10 +535,12 @@ handleClickCancel = () => {
              <div className="button-row">    
                 <button type="submit"
                  disabled={
-                     (!this.state.activity1.touched && !this.state.gratitude1.touched) || 
-                     this.validateTypeRating() || 
-                     this.validateActivityInputs() ||
-                     this.validateGratitudeInputs()}
+                     (!this.state.activity1.touched && !this.state.gratitude1.touched) 
+                    //  || 
+                    //  this.validateTypeRating() || 
+                    //  this.validateActivityInputs() ||
+                    //  this.validateGratitudeInputs()
+                    }
                      >
                     Submit</button>
                 <button type="reset"
