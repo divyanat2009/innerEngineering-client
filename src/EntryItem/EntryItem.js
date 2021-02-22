@@ -8,7 +8,7 @@ class EntryItem extends Component{
   
     render(){   
         
-        const {content, type, rating, typeOfResults, date_formatted } = this.props;
+        const { content, type, rating, typeOfResults, date_formatted } = this.props;
         
         let listItem = '';
         if(typeOfResults==='selfcares'){

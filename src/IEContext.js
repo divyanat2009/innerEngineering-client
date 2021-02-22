@@ -19,7 +19,7 @@ const IEContext = React.createContext({
         "emotional": "4",
         "spiritual":"7",
         "physical":"5",
-        "intellectual":"7"
+        "energy":"7"
     },
      
       quotes:{
