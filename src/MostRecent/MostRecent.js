@@ -7,13 +7,16 @@ import GoalList from '../GoalList/GoalList';
 class MostRecent extends Component{
     static contextType = IEContext;
      state={
-         user_id:""         
+         user_id:""
+                       
      }
      
     render(){
-        const user_id=this.props.user_id;
+        console.log("most recnt rendered")
+        const user_id=this.props.user_id;    
         return(
-            <section className="most-recent">
+            
+            <section className="most-recent">                
                 <header>
                     <h3>What's Been Happening?</h3>
                 </header>
@@ -31,6 +34,7 @@ class MostRecent extends Component{
                      <GoalList user_id={user_id}/>
                 </main>
             </section>
+        
         );
     }
 }

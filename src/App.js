@@ -21,8 +21,7 @@ class App extends Component{
   constructor(props){
     super(props);
     this.state={
-      users:data.users,
-      username:"",
+      users:data.users,      
       user_id:"",
       selfcares:data.selfcare,
       gratitudes:data.gratitude,
@@ -111,7 +110,7 @@ updateGoals=(newgoals)=>{
   });
   console.log(newgoals)
 }
-setUserId=(id)=>{
+setUserId=(id)=>{  
   this.setState({
     user_id:id
   })
@@ -119,9 +118,9 @@ setUserId=(id)=>{
 }
 
 
-componentDidMount(){  
+componentDidMount(){     
   this.setState({
-    error:null
+    error:null,    
   });
 
   //getting users
@@ -173,13 +172,15 @@ componentDidMount(){
       });
     });  
   //getting gratitudes
-  fetch(`${config.API_ENDPOINT}api/gratitudes`,{
+  console.log(TokenService.getAuthToken());
+  fetch(`${config.API_ENDPOINT}api/gratitudes/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
       'authorization': `bearer ${TokenService.getAuthToken()}`,
-    },
+    },    
   })
+  
   .then(res=>{
     console.log("fetching gratitudes")
     if(!res.ok){
@@ -188,6 +189,7 @@ componentDidMount(){
     return res.json();
   })
   .then(data=>{
+    
     let formatedDateData = data.map(obj=>FormatDate(obj));
     this.setState({
       gratitude_most_recent:formatedDateData,
@@ -202,7 +204,7 @@ componentDidMount(){
     });
   })
   //getting selfcares
-  fetch(`${config.API_ENDPOINT}api/selfcares`,{
+  fetch(`${config.API_ENDPOINT}api/selfcares/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
@@ -275,7 +277,7 @@ componentDidMount(){
     });
   })//end of fetch for goals
  //getting moods
-  fetch(`${config.API_ENDPOINT}api/moods`,{
+  fetch(`${config.API_ENDPOINT}api/moods/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',

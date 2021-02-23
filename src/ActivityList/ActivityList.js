@@ -8,7 +8,7 @@ class ActivityList extends Component{
    
     render(){
         const user_id=this.props.user_id;
-        
+        console.log(user_id)
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
@@ -19,7 +19,7 @@ class ActivityList extends Component{
            }
        
            let results = this.props.list;
-           console.log(results)
+           //console.log(results)
            //sorting the results by date and returning the three most recent
            let sortedResults = results;
            if(results && results[0] && results.date_modified){
@@ -28,7 +28,7 @@ class ActivityList extends Component{
                );
            }
            let topThree = [ sortedResults[0], sortedResults[1], sortedResults[2]];
-           console.log(topThree)
+           //console.log(topThree)
 
            return(
                <section className="recent-activities">
