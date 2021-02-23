@@ -13,15 +13,14 @@ class Dashboard extends Component{
     super(props);
     this.state = {
         user_id:""
-    }
+    };
   }
     componentDidMount() {      
       const user_id = this.props.match.params.id;
-      this.context.setUserId(user_id);
-      console.log(user_id)
+      this.context.setUserId(user_id);      
       this.setState({
         user_id : user_id
-      })
+      });
     } 
     
     render(){

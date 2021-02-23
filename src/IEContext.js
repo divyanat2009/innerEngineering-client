@@ -1,20 +1,48 @@
 import React from 'react';
 
 const IEContext = React.createContext({
-      selfcares:{
-        "gratitude_id":"1",
+      selfcares:[{
+        "selfcare_id":"1",
         "user_id":"1",
-        "content":"A catch up phone call with mom",
+        "content":"went for a run",
         "date_modified":"January 27th 2021",
         "type":"emotional",
-        "rating":"5",           
-    },
-      gratitudes:{
+        "rating":"5",          
+      },
+      {
+        "selfcare_id":"1",
+        "user_id":"2",
+        "content":"15 mins of breathing exercise",
+        "date_modified":"January 27th 2021",
+        "type":"physical",
+        "rating":"5", 
+      },
+      {
+        "selfcare_id":"1",
+        "user_id":"1",
+        "content":"pilates workout",
+        "date_modified":"January 27th 2021",
+        "type":"emotional",
+        "rating":"5",
+      }],
+      gratitudes:[{
         "gratitude_id":"1",
         "user_id":"1",
         "content":"A catch up phone call with mom",
         "date_modified":"January 7th 2021"           
      },
+     {
+      "gratitude_id":"1",
+      "user_id":"1",
+      "content":"Passing the tests",
+      "date_modified":"January 7th 2021" 
+     },
+     {
+      "gratitude_id":"1",
+      "user_id":"1",
+      "content":"Sunset view from my condo",
+      "date_modified":"January 7th 2021" 
+     }],
       goals:{
         "emotional": "4",
         "spiritual":"7",

@@ -105,9 +105,8 @@ updateEnergy=(energyLevel)=>{
 
 handleSubmit = e =>{
     e.preventDefault();
-    const { gratitude1, activity1, type1, rating1, mood, energy } = this.state;
-    console.log(gratitude1)
-    const user_id = this.props.match.params.id;    
+    const {user_id, gratitude1, activity1, type1, rating1, mood, energy } = this.state;
+    console.log(gratitude1)        
     console.log(user_id); 
     //add selfcare        
     let newSelfCare={};
@@ -132,15 +131,7 @@ handleSubmit = e =>{
     }
 
   //add energy and mood  
-  let newMoods={};
-    if(energy.value && mood.value){
-      const newMoods = {
-         user_id:user_id, 
-         energy_level:energy.value,
-         mood_level:mood.value,
-        };  
-        console.log(newMoods);
-  };
+
 
   if(newGratitude.length !== 0){   
   fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
@@ -199,8 +190,17 @@ handleSubmit = e =>{
         this.setState({ error });
       });
     }//end if newSelfcare
-
-    if(newMoods){      
+    let newMoods={};
+    if(energy.value && mood.value){
+      const newMoods = {
+         user_id:parseInt(user_id), 
+         energy_level:parseInt(energy.value),
+         mood_level:parseInt(mood.value),
+        };  
+        console.log(newMoods);
+  };
+    if(newMoods){    
+      setTimeout(2000, ()=>{  
        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
           method: 'POST',
           body: JSON.stringify(newMoods),
@@ -227,6 +227,7 @@ handleSubmit = e =>{
         .catch(error => {
           this.setState({ error });
         });
+       })
       }//end if newMood
       
   this.props.history.push(`/dashboard/${this.state.user_id}`);

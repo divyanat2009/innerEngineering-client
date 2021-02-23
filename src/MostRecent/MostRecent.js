@@ -7,9 +7,7 @@ import GoalList from '../GoalList/GoalList';
 class MostRecent extends Component{
     static contextType = IEContext;
      state={
-         user_id:"",
-         selfcares:{},
-         gratitudes:{}
+         user_id:""         
      }
      
     render(){
@@ -20,14 +18,12 @@ class MostRecent extends Component{
                     <h3>What's Been Happening?</h3>
                 </header>
                 <main>
-                    <ActivityList   
-                       user_id={user_id}                    
+                    <ActivityList                                            
                        typePage={'selfcares'}
                        list = {this.context.selfcares}
                        listHeading = {'Your Most Recent Wellbeing Activities'}
                        random = {false} />
-                    <ActivityList       
-                       user_id={user_id}                
+                    <ActivityList                                             
                        typePage={'gratitudes'}
                        list = {this.context.gratitudes}
                        listHeading = {`Your Most Recent Gratitudes`} 
