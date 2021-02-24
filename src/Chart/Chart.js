@@ -6,9 +6,11 @@ import IEContext from '../IEContext.js';
 import { CreateProgressArray } from '../Functions/CreateProgressArray';
 
 class Chart extends Component {
-static contextType = IEContext;
+static contextType = IEContext; 
 
     render() {
+        const user_id=this.props.user_id;
+        console.log(user_id)
         let array = this.context.selfcares;
         let progressArray=[];
         if(array!==0)

@@ -5,30 +5,18 @@ import { Link } from 'react-router-dom';
 
 class ActivityList extends Component{
     static contextType = IEContext;
-    constructor(props){
-        super(props);
-        this.state = {
-            user_id:""
-        };
-      }     
-    componentDidMount() {      
-        const user_id = this.props.user_id;
-        console.log(user_id)
-        //this.context.setUserId(user_id);        
-        this.setState({
-           user_id : user_id
-        });
-    }
+
     render(){            
-        //const user_id=this.props.user_id;
+        const user_id=this.props.user_id;
+        console.log(user_id)
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
-         linkURL = `/past-care/${this.state.user_id}`
+         linkURL = `/past-care/${user_id}`
         }
         else if(this.props.typePage ==='gratitudes'){
-            linkURL = `/past-gratitude/${this.state.user_id}`
-           }
+            linkURL = `/past-gratitude/${user_id}`
+        }
           
            let results = this.props.list;
            //console.log(results)

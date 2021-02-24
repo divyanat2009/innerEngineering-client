@@ -7,24 +7,19 @@ import Nav from '../Nav/Nav.js';
 
 class PastGratitude extends Component{
     static contextType = IEContext;
-    static contextType = IEContext;
-    constructor(props){
-      super(props);
-      this.state = {
-          user_id:""
-      };
-    }
+    state = {
+        user_id:"",        
+    };
     componentDidMount() {      
-      const user_id = this.props.match.params.id;
-      this.context.setUserId(user_id);
-      console.log(user_id)
-      this.setState({
-        user_id : user_id
-      })
-    } 
+        const user_id = this.props.match.params.id;
+        this.context.setUserId(user_id);
+        console.log(user_id)
+        this.setState({
+          user_id : user_id
+        })
+      }
   
-    render(){
-        
+    render(){        
         return(
             <div className="past-gratitude">
                 <header>
