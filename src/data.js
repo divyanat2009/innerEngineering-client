@@ -72,6 +72,10 @@ module.exports= {
             "date":"January 3rd 2021"           
         },
     ],
+    list:{
+        "content":"Beautiful Sunset"
+        
+    },
     goals:{
         "emotional": "4",
         "spiritual":"7",

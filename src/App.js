@@ -114,7 +114,7 @@ setUserId=(id)=>{
   this.setState({
     user_id:id
   })
-  console.log(id);
+  console.log("INSIDE SETUSERID", id)
 }
 
 
@@ -173,6 +173,7 @@ componentDidMount(){
     });  
   //getting gratitudes
   console.log(TokenService.getAuthToken());
+  console.log(this.state.user_id);
   fetch(`${config.API_ENDPOINT}api/gratitudes/${this.state.user_id}`,{
     method:'GET',
     headers:{
@@ -204,7 +205,7 @@ componentDidMount(){
     });
   })
   //getting selfcares
-  fetch(`${config.API_ENDPOINT}api/selfcares/${this.state.user_id}`,{
+  fetch(`${config.API_ENDPOINT}api/selfcares`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
@@ -277,7 +278,7 @@ componentDidMount(){
     });
   })//end of fetch for goals
  //getting moods
-  fetch(`${config.API_ENDPOINT}api/moods/${this.state.user_id}`,{
+  fetch(`${config.API_ENDPOINT}api/moods`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',

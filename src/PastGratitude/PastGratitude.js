@@ -7,10 +7,13 @@ import Nav from '../Nav/Nav.js';
 
 class PastGratitude extends Component{
     static contextType = IEContext;
-    state = {
-        user_id:""
+    static contextType = IEContext;
+    constructor(props){
+      super(props);
+      this.state = {
+          user_id:""
+      };
     }
-  
     componentDidMount() {      
       const user_id = this.props.match.params.id;
       this.context.setUserId(user_id);

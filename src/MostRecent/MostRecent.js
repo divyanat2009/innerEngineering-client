@@ -7,8 +7,7 @@ import GoalList from '../GoalList/GoalList';
 class MostRecent extends Component{
     static contextType = IEContext;
      state={
-         user_id:""
-                       
+         user_id:""                       
      }
      
     render(){

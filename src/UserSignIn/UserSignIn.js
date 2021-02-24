@@ -11,7 +11,7 @@ class UserSignIn extends Component {
     };
     
     handleSubmitJwtAuth = ev => {
-      ev.preventDefault()
+      ev.preventDefault();
       this.setState({         
         error: null 
       });
@@ -23,13 +23,12 @@ class UserSignIn extends Component {
         .then(res => {
           username.value = ''
           password.value = ''
-          TokenService.saveAuthToken(res.authToken)
-        
-
+          TokenService.saveAuthToken(res.authToken)          
           this.props.history.push('/dashboard/'+res.id);           
         })
         .catch(res => {
-          this.setState({ error: res.error })
+          this.setState(
+            { error: res.error })
         });
     }
     render() {            
