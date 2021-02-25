@@ -12,30 +12,32 @@ class EntryList extends Component{
     };
     render(){
         let {typeOfResults} = this.props;
-        let results = this.context[typeOfResults];
+       // let results = this.context[typeOfResults];
+       let results= this.props.results
         let page = this.context.current_display[typeOfResults].page;
         let selectedType = this.context.current_display[typeOfResults].type;
         let selectedDate = this.context.current_display[typeOfResults].date_to;
         let selectedRating = this.context.current_display[typeOfResults].rating;
-        let sortedResults = results;
-        if(results[0].date_modified){
-            sortedResults = results.sort((a,b)=>
-                b.date_modified > a.date_modified ? 1 : b.date_modified < a.date_modified ? -1 : 0
-            );
-        }           
+        //let sortedResults = results;
+        let filteredResults = results;
+        // if(results[0].date_modified){
+        //     sortedResults = results.sort((a,b)=>
+        //         b.date_modified > a.date_modified ? 1 : b.date_modified < a.date_modified ? -1 : 0
+        //     );
+        // }           
        //filters for type selected
         if(selectedType !== 'all' && selectedType){         
-            results = sortedResults.filter(result=>
+            filteredResults = filteredResults.filter(result=>
                 result.type.includes(selectedType))         
         };
         //filter for date
         if(selectedDate !== 'all' && selectedDate){         
-            results = sortedResults.filter(result=>
+        filteredResults = filteredResults.filter(result=>
             result.date_modified.includes(selectedDate))         
         };
             //filter for rating
         if(selectedRating !== 'all' && selectedRating){         
-            results = sortedResults.filter(result=>
+            filteredResults = filteredResults.filter(result=>
             (result.rating).toString().includes(selectedRating.toString())   
             );        
         } 
@@ -77,7 +79,7 @@ class EntryList extends Component{
         return(
             <section className="results-list">                 
                <ul className="result-list">                      
-                  {results.map((entry,i)=> 
+                  {filteredResults.map((entry,i)=> 
                   <EntryItem typeOfResults = {typeOfResults}
                              key={i}{...entry}
                   />

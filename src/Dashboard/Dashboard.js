@@ -17,6 +17,7 @@ class Dashboard extends Component{
     this.state = {
         user_id:"",
         selfcares:[],
+        gratitudes:[]
     };
   }
     componentDidMount() {      
@@ -172,7 +173,7 @@ class Dashboard extends Component{
                    <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
-                  <Progress user_id={this.state.user_id} selfcares={this.state.selfcares}/>  
+                  <Progress user_id={this.state.user_id} selfcares={this.state.selfcares} gratitudes={this.state.gratitudes}/>  
                   <ButtonRow
                      links ={
                         [{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]

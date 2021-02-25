@@ -11,7 +11,7 @@ class Progress extends Component{
       console.log(this.props.selfcares);
         return(
             <section className="progress">
-               <MostRecent user_id={user_id} selfcares={this.props.selfcares} />
+               <MostRecent user_id={user_id} selfcares={this.props.selfcares} gratitudes={this.props.gratitudes}/>
                <VisualData user_id={user_id}/>
             </section>
         )

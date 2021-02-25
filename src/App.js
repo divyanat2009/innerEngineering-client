@@ -65,6 +65,7 @@ updateTypeSelected=(typeOfPage,selectedType)=>{
   this.setState(
     {current_display:current_display}
   );
+  console.log(current_display);
 }
 
 updateDateSelected=(typeOfPage, date)=>{
@@ -73,6 +74,7 @@ updateDateSelected=(typeOfPage, date)=>{
   this.setState(
     {current_display:current_display}
   );
+  console.log(current_display)
 }
 
 updateRatingSelected=(typeOfPage, ratingSelected)=>{
@@ -81,6 +83,7 @@ updateRatingSelected=(typeOfPage, ratingSelected)=>{
   this.setState(
     {current_display:current_display}
   );
+  console.log(current_display)
 }
  
 addSelfCare=(newSelfCare)=>{
