@@ -139,7 +139,7 @@ handleSubmit = e =>{
     body: JSON.stringify(newGratitude),
     headers: {
      'content-type': 'application/json',
-     'authorization': `bearer ${TokenService.getAuthToken()}`,
+     'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },
   })
     .then(res => {
@@ -169,7 +169,7 @@ handleSubmit = e =>{
       body: JSON.stringify(newSelfCare),
       headers: {
        'content-type': 'application/json',
-       'authorization': `bearer ${TokenService.getAuthToken()}`,
+       'Authorization': `Bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res => {
@@ -183,7 +183,8 @@ handleSubmit = e =>{
         return res.json();
       })
       .then(data => {
-          let formatedDateData = data.map(obj=>FormatDate(obj));
+         console.log(data)
+         let formatedDateData = data.map(obj=>FormatDate(obj));
          this.context.addSelfCare(formatedDateData);
       })
       .catch(error => {
@@ -206,7 +207,7 @@ handleSubmit = e =>{
           body: JSON.stringify(newMoods),
            headers: {
            'content-type': 'application/json',
-           'authorization': `bearer ${TokenService.getAuthToken()}`,
+           'Authorization': `Bearer ${TokenService.getAuthToken()}`,
           },
       })
         .then(res => {
@@ -230,7 +231,7 @@ handleSubmit = e =>{
        })
       }//end if newMood
       
-  this.props.history.push(`/dashboard/${this.state.user_id}`);
+  //this.props.history.push(`/dashboard/${this.state.user_id}`);
 }//end of handleSubmit
 
 handleClickCancel = () => {

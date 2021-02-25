@@ -40,6 +40,6 @@ export const FormatDate = obj =>{
      month = 'Dec'
    };
    let newDate = `${month} ${day} ${year}`;
-   let newObj = obj = {...obj, date_formatted:newDate};
+   let newObj = {...obj, date_formatted:newDate};
    return newObj;
    }

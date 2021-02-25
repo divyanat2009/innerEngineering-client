@@ -178,7 +178,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`,
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },    
   })
   
@@ -205,11 +205,11 @@ componentDidMount(){
     });
   })
   //getting selfcares
-  fetch(`${config.API_ENDPOINT}api/selfcares`,{
+  fetch(`${config.API_ENDPOINT}api/selfcares/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`,
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -233,7 +233,7 @@ componentDidMount(){
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`,
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -253,11 +253,11 @@ componentDidMount(){
     });
   })
   //getting goals
-  fetch(`${config.API_ENDPOINT}api/goals`,{
+  fetch(`${config.API_ENDPOINT}api/goals/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`,
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },
   })
   .then(res=>{
@@ -278,11 +278,11 @@ componentDidMount(){
     });
   })//end of fetch for goals
  //getting moods
-  fetch(`${config.API_ENDPOINT}api/moods`,{
+  fetch(`${config.API_ENDPOINT}api/moods/${this.state.user_id}`,{
     method:'GET',
     headers:{
       'content-type': 'application/json',
-      'authorization': `bearer ${TokenService.getAuthToken()}`
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`
     },
   })
   .then(res=>{
