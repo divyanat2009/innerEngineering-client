@@ -11,7 +11,7 @@ import Footer from './Footer/Footer.js';
 import IEContext from './IEContext.js';
 import data from './data.js';
 import config from './config.js';
-import { FormatDate } from './Functions/FormatDate';
+//import { FormatDate } from './Functions/FormatDate';
 import UserSignUp from './UserSignUp/UserSignUp';
 import UserSignIn from './UserSignIn/UserSignIn';
 import TokenService from './services/token-service';
@@ -118,7 +118,7 @@ setUserId=(id)=>{
 }
 
 
-componentDidMount(){     
+componentDidMount(){      
   this.setState({
     error:null,    
   });
@@ -174,134 +174,8 @@ componentDidMount(){
   //getting gratitudes
   console.log(TokenService.getAuthToken());
   console.log(this.state.user_id);
-  fetch(`${config.API_ENDPOINT}api/gratitudes/${this.state.user_id}`,{
-    method:'GET',
-    headers:{
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-    },    
-  })
   
-  .then(res=>{
-    console.log("fetching gratitudes")
-    if(!res.ok){
-      throw new Error('Something went wrong, please try again later');
-    }
-    return res.json();
-  })
-  .then(data=>{
-    
-    let formatedDateData = data.map(obj=>FormatDate(obj));
-    this.setState({
-      gratitude_most_recent:formatedDateData,
-    });
-    this.setState({
-      gratitudes:formatedDateData,
-    });
-  })
-  .catch(err => {
-    this.setState({
-      error: err.message
-    });
-  })
-  //getting selfcares
-  fetch(`${config.API_ENDPOINT}api/selfcares/${this.state.user_id}`,{
-    method:'GET',
-    headers:{
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-    },
-  })
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, please try again later');
-    }
-    return res.json();
-  })
-  .then(data=>{    
-   let formatedDateData = data.map(obj=>FormatDate(obj));
-    this.setState({
-      selfcares:formatedDateData,
-    });
-  })
-  .catch(err => {
-    this.setState({
-      error: err.message
-    });
-  })  
-  fetch(`${config.API_ENDPOINT}api/quotes`,{
-    method:'GET',
-    headers:{
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-    },
-  })
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, please try again later');
-    }
-    return res.json();
-  })
-  .then(data=>{
-    this.setState({
-      quotes:data,
-     });
-  })
-  .catch(err => {
-    this.setState({
-      error: err.message
-    });
-  })
-  //getting goals
-  fetch(`${config.API_ENDPOINT}api/goals/${this.state.user_id}`,{
-    method:'GET',
-    headers:{
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
-    },
-  })
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, please try again later');
-    }
-    return res.json();
-  })
-  .then(data=>{
-    let lastEntry = data.length
-    this.setState({
-      goals:data[lastEntry-1],
-     });
-  })
-  .catch(err => {
-    this.setState({
-      error: err.message
-    });
-  })//end of fetch for goals
- //getting moods
-  fetch(`${config.API_ENDPOINT}api/moods/${this.state.user_id}`,{
-    method:'GET',
-    headers:{
-      'content-type': 'application/json',
-      'Authorization': `Bearer ${TokenService.getAuthToken()}`
-    },
-  })
-  .then(res=>{
-    if(!res.ok){
-      throw new Error('Something went wrong, please try again later');
-    }
-    return res.json();
-  })
-  .then(data=>{
-    let formatedDateData = data.map(obj=>FormatDate(obj));
-    this.setState({
-      moods:formatedDateData,
-    });
-  })
-  .catch(err => {
-    this.setState({
-      error: err.message
-    });
-  })
+  
 }//end of cDM
 
 

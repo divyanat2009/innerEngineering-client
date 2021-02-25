@@ -6,13 +6,17 @@ import '../_styles/Dashboard.css';
 import Nav from '../Nav/Nav.js';
 import {Link} from 'react-router-dom';
 import IEContext from '../IEContext';
+import config from '../../src/config';
+import TokenService from '../services/token-service';
+import {FormatDate} from '../Functions/FormatDate';
 
 class Dashboard extends Component{
   static contextType = IEContext;
   constructor(props){
     super(props);
     this.state = {
-        user_id:""
+        user_id:"",
+        selfcares:[],
     };
   }
     componentDidMount() {      
@@ -22,9 +26,143 @@ class Dashboard extends Component{
       this.setState({
         user_id : user_id
       });
+
+      fetch(`${config.API_ENDPOINT}api/gratitudes/${user_id}`,{
+        method:'GET',
+        headers:{
+          'content-type': 'application/json',
+          'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+        },    
+      })
+      
+      .then(res=>{
+        console.log("fetching gratitudes")
+        if(!res.ok){
+          throw new Error('Something went wrong, please try again later');
+        }
+        return res.json();
+      })
+      .then(data=>{
+        
+        let formatedDateData = data.map(obj=>FormatDate(obj));
+        this.setState({
+          gratitude_most_recent:formatedDateData,
+        });
+        this.setState({
+          gratitudes:formatedDateData,
+        });
+      })
+      .catch(err => {
+        this.setState({
+          error: err.message
+        });
+      })
+
+      //getting selfcares
+  fetch(`${config.API_ENDPOINT}api/selfcares/${user_id}`,{
+    method:'GET',
+    headers:{
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+    },
+  })
+  .then(res=>{
+    if(!res.ok){
+      throw new Error('Something went wrong, please try again later');
+    }
+    return res.json();
+  })
+  .then(data=>{    
+    console.log(data)
+   let formatedDateData = data.map(obj=>FormatDate(obj));
+
+    this.setState({      
+      selfcares:formatedDateData,
+    });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  })  
+  fetch(`${config.API_ENDPOINT}api/quotes`,{
+    method:'GET',
+    headers:{
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+    },
+  })
+  .then(res=>{
+    if(!res.ok){
+      throw new Error('Something went wrong, please try again later');
+    }
+    return res.json();
+  })
+  .then(data=>{
+    this.setState({
+      quotes:data,
+     });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  })
+  //getting goals
+  fetch(`${config.API_ENDPOINT}api/goals/${user_id}`,{
+    method:'GET',
+    headers:{
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
+    },
+  })
+  .then(res=>{
+    if(!res.ok){
+      throw new Error('Something went wrong, please try again later');
+    }
+    return res.json();
+  })
+  .then(data=>{
+    let lastEntry = data.length
+    this.setState({
+      goals:data[lastEntry-1],
+     });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  })//end of fetch for goals
+ //getting moods
+  fetch(`${config.API_ENDPOINT}api/moods/${user_id}`,{
+    method:'GET',
+    headers:{
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${TokenService.getAuthToken()}`
+    },
+  })
+  .then(res=>{
+    if(!res.ok){
+      throw new Error('Something went wrong, please try again later');
+    }
+    return res.json();
+  })
+  .then(data=>{
+    let formatedDateData = data.map(obj=>FormatDate(obj));
+    this.setState({
+      moods:formatedDateData,
+    });
+  })
+  .catch(err => {
+    this.setState({
+      error: err.message
+    });
+  })
+
     } 
     
     render(){
+      console.log(this.state.selfcares)
         return(
             <div className="dashboard">
                 <header>
@@ -34,7 +172,7 @@ class Dashboard extends Component{
                    <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
-                  <Progress user_id={this.state.user_id}/>  
+                  <Progress user_id={this.state.user_id} selfcares={this.state.selfcares}/>  
                   <ButtonRow
                      links ={
                         [{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]

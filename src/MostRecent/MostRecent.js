@@ -10,6 +10,7 @@ class MostRecent extends Component{
     render(){    
         const user_id=this.props.user_id;  
         console.log(user_id)  
+        console.log(this.props.selfcares)
         return(
             
             <section className="most-recent">                
@@ -20,7 +21,7 @@ class MostRecent extends Component{
                     <ActivityList   
                        user_id={user_id}                                         
                        typePage={'selfcares'}
-                       list = {this.context.selfcares}
+                       list = {this.props.selfcares}
                        listHeading = {'Your Most Recent Wellbeing Activities'}
                        random = {false} />
                     <ActivityList         

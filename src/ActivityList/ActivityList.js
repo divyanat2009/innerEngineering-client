@@ -19,28 +19,29 @@ class ActivityList extends Component{
         }
           
            let results = this.props.list;
-           //console.log(results)
+           console.log(results)
            //sorting the results by date and returning the three most recent
            let sortedResults = results;
-           if(results && results[0] && results.date_modified){
-               sortedResults = results.sort((a,b)=>
-                   b.date_modified > a.date_modified ? 1 : b.date_modified < a.date_modified ? -1 : 0
-               );
-           }
+        //    if(results && results[0] && results.date_modified){
+        //        sortedResults = results.sort((a,b)=>
+        //            b.date_modified > a.date_modified ? 1 : b.date_modified < a.date_modified ? -1 : 0
+        //        );
+        //    }
          let topThree = [ sortedResults[0], sortedResults[1], sortedResults[2]];
-        //console.log(topThree)
+        console.log(topThree)
 
            return(
                <section className="recent-activities">
                    <Link className="button-link" to={linkURL}>See All</Link>
                        <ul className="recent-activities-list">
                             <li >{this.props.listHeading}</li>
-                         
+
+                         {/*
                            {topThree.map((entry,i)=> 
                                <li key={i} className="recent-activities-item">
                                    <span>{entry.content}</span>
                                    <span>{entry.date_formatted}</span>
-                               </li>)}                      
+                           </li>)}    */}                  
                        </ul>
                </section>
            )

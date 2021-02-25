@@ -8,9 +8,10 @@ class Progress extends Component{
     render(){
       const user_id=this.props.user_id;
       console.log(user_id)
+      console.log(this.props.selfcares);
         return(
             <section className="progress">
-               <MostRecent user_id={user_id}/>
+               <MostRecent user_id={user_id} selfcares={this.props.selfcares} />
                <VisualData user_id={user_id}/>
             </section>
         )
