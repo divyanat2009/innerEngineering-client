@@ -12,8 +12,7 @@ class DailyForm extends Component{
   static contextType = IEContext;
 
   constructor(props){
-    super(props);
-    console.log("id"+this.props.match.params.id)
+    super(props);    
     this.state={
         date:{
             value:"1",
@@ -50,22 +49,20 @@ class DailyForm extends Component{
 }
 componentDidMount() {
   const user_id = this.props.match.params.id;  
-  this.context.setUserId(user_id);
-  console.log(user_id)
+  this.context.setUserId(user_id);  
   this.setState({
     user_id : user_id    
-  })
+  });
 }
+//Updating
 updateGratitude=(gratitude, inputId)=>{
 if(inputId==='gratitude1')
   {
     this.setState({
       gratitude1:{value: gratitude, touched: true}
-    });
-    console.log(gratitude);
+    });    
   };
 }
-
 updateActivities=(activity, inputId)=>{
     if(inputId==='activity1')
       {
@@ -90,13 +87,11 @@ updateActivityRating=(rating, inputId)=>{
         });
       };
 }
-
 updateMood=(moodLevel)=>{
     this.setState({
       mood:{value: moodLevel, touched: true}
     });
 }
-
 updateEnergy=(energyLevel)=>{
     this.setState({
       energy:{value: energyLevel, touched: true}
@@ -104,35 +99,17 @@ updateEnergy=(energyLevel)=>{
 }
 
 handleSubmit = e =>{
-    e.preventDefault();
-    const {user_id, gratitude1, activity1, type1, rating1, mood, energy } = this.state;
-    console.log(gratitude1)        
-    console.log(user_id); 
-    //add selfcare        
-    let newSelfCare={};
-    if(activity1.value){
-      newSelfCare = {        
-        user_id:user_id,
-        content:activity1.value,
-        type:type1.value,
-        rating:rating1.value,
-      }
-      console.log(`nsc from form ${newSelfCare.content}`)
-    }
- 
+  e.preventDefault();
+  const {user_id, gratitude1, activity1, type1, rating1, mood, energy } = this.state;      
   //add gratitude
-    let newGratitude={};
-    if(gratitude1.value){
+  let newGratitude={};
+  if(gratitude1.value){
       newGratitude = {
       user_id:user_id,
       content:gratitude1.value,
-      }
-      console.log(newGratitude);
-    }
-
-  //add energy and mood  
-
-
+      };      
+  }
+    //add energy and mood  
   if(newGratitude.length !== 0){   
   fetch(`${config.API_ENDPOINT}api/gratitudes/`+user_id,{
     method: 'POST',
@@ -142,8 +119,7 @@ handleSubmit = e =>{
      'Authorization': `Bearer ${TokenService.getAuthToken()}`,
     },
   })
-    .then(res => {
-      console.log(res);
+    .then(res => {      
        if (!res.ok) {
        // get the error message from the response,
          return res.json().then(error => {
@@ -153,8 +129,7 @@ handleSubmit = e =>{
         }
         return res.json();
       })
-      .then(data => {
-        console.log(data);
+      .then(data => {        
         let formatedDateData = data.map(obj=>FormatDate(obj));
         this.context.addGratitude(formatedDateData);
       })
@@ -163,6 +138,16 @@ handleSubmit = e =>{
       });
     }//end of newGratitude
 
+  //add selfcare        
+  let newSelfCare={};
+  if(activity1.value){
+    newSelfCare = {        
+        user_id:user_id,
+        content:activity1.value,
+        type:type1.value,
+        rating:rating1.value,
+      };      
+  } 
   if(newSelfCare.length !== 0){    
     fetch(`${config.API_ENDPOINT}api/selfcares/`+user_id,{
       method: 'POST',
@@ -182,8 +167,7 @@ handleSubmit = e =>{
         }
         return res.json();
       })
-      .then(data => {
-         console.log(data)
+      .then(data => {        
          let formatedDateData = data.map(obj=>FormatDate(obj));
          this.context.addSelfCare(formatedDateData);
       })
@@ -193,13 +177,12 @@ handleSubmit = e =>{
     }//end if newSelfcare
     let newMoods={};
     if(energy.value && mood.value){
-      const newMoods = {
+         newMoods = {
          user_id:parseInt(user_id), 
          energy_level:parseInt(energy.value),
          mood_level:parseInt(mood.value),
-        };  
-        console.log(newMoods);
-  };
+        };          
+    }
     if(newMoods){    
       setTimeout(2000, ()=>{  
        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
@@ -231,7 +214,7 @@ handleSubmit = e =>{
        })
       }//end if newMood
       
-  this.props.history.push(`/dashboard/${this.state.user_id}`);
+    this.props.history.push(`/dashboard/${this.state.user_id}`);
 }//end of handleSubmit
 
 handleClickCancel = () => {
@@ -244,7 +227,7 @@ handleClickCancel = () => {
             <section className="dailyform">
                 <header>
                     <Nav pageType={'interior'} user_id={this.state.user_id}/>
-                    <h2>Today's Wellbeing and Gratitude</h2>
+                    <h2>Today's Selfcare and Gratitude</h2>
                 </header>
                 <form className="daily-form" onSubmit={e=>this.handleSubmit(e)}>
                   
@@ -263,7 +246,7 @@ handleClickCancel = () => {
                                     <input placeholder="went for a run" type="text" name="activity1" id="activity1"
                                     onChange={e => this.updateActivities(e.target.value, e.target.id)}/>
                                 </div>
-                                <label htmlFor="type1">Type of Wellbeing</label>
+                                <label htmlFor="type1">Type of Selfcare</label>
                                 <select id="type1"
                                 onChange={e => this.updateActivityType(e.target.value, e.target.id)}>
                                     <option value="">Select</option>
@@ -325,7 +308,7 @@ handleClickCancel = () => {
             </form>
             <ButtonRow
                 links ={[{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},
-                         {[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},
+                         {[`/past-care/${this.state.user_id}`]:'Your Past Selfcare'},
                          {[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},
                          {[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]}
             />    

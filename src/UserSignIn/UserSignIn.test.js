@@ -2,14 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
-import GoalForm from './GoalForm';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
+import UserSignIn from './UserSignIn';
 
-describe(`GoalForm component`, () => {
-    const user_id=8
+
+describe(`UserSignIn component`, () => {
+    
     it('renders without crashing', () => {
         const div = document.createElement('div');
-        ReactDOM.render(<Router><GoalForm user_id={user_id}/></Router>, div);
+        ReactDOM.render(<Router><UserSignIn /></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });
+
 })

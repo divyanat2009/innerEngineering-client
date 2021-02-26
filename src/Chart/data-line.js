@@ -2,7 +2,7 @@ module.exports= [
  
     {
       "id": "mood",
-      "color": "hsl(46, 70%, 50%)",
+      "color": "hsl(82, 39%, 39%)",
       "data": [
         {
           "x": "1",

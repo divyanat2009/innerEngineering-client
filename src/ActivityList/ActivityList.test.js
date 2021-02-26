@@ -34,8 +34,9 @@ describe(`ActivityList component`, () => {
         const typePage='selfcares'
         const listHeading = 'Your Most Recent Self-Care Activities'
         const random = false
+        const user_id=8
         const div = document.createElement('div');
-        ReactDOM.render(<Router><ActivityList list={list} topThree={list} typePage={typePage} listHeading={listHeading} random ={random} /></Router>, div);
+        ReactDOM.render(<Router><ActivityList user_id={user_id } list={list} typePage={typePage} listHeading={listHeading} random ={random} /></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });
 

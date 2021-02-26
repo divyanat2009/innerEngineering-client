@@ -8,9 +8,7 @@ import { CreateProgressArray } from '../Functions/CreateProgressArray';
 class Chart extends Component {
 static contextType = IEContext; 
 
-    render() {
-        const user_id=this.props.user_id;
-        console.log(user_id)
+    render() {                
         let array = this.props.selfcares;
         let progressArray=[];
         if(array!==0)

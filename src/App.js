@@ -65,7 +65,6 @@ updateTypeSelected=(typeOfPage,selectedType)=>{
   this.setState(
     {current_display:current_display}
   );
-  console.log(current_display);
 }
 
 updateDateSelected=(typeOfPage, date)=>{
@@ -82,42 +81,36 @@ updateRatingSelected=(typeOfPage, ratingSelected)=>{
   current_display[typeOfPage].rating = ratingSelected;
   this.setState(
     {current_display:current_display}
-  );
-  console.log(current_display)
+  );  
 }
- 
+// adding selfcares, gratitudes, moods & updating goals 
 addSelfCare=(newSelfCare)=>{
   this.setState({
     selfcares: newSelfCare
-    });  
-    console.log(newSelfCare)
+    });    
 };
 
 addGratitude=(newGratitude)=>{  
   this.setState({
     gratitudes: newGratitude
-  });
-  console.log(newGratitude);
+  });  
 };
 
 addMoods=(newMoods)=>{
   this.setState({
     moods:newMoods
-  });
-  console.log(newMoods)
+  });  
 }
 
 updateGoals=(newgoals)=>{
   this.setState({
     goals:newgoals
-  });
-  console.log(newgoals)
+  });  
 }
 setUserId=(id)=>{  
   this.setState({
     user_id:id
-  })
-  console.log("INSIDE SETUSERID", id)
+  });  
 }
 
 
@@ -173,11 +166,7 @@ componentDidMount(){
       this.setState({
         error:err.message
       });
-    });  
-  //getting gratitudes
-  console.log(TokenService.getAuthToken());
-  console.log(this.state.user_id);
-  
+    });   
   
 }//end of cDM
 

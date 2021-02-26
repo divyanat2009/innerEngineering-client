@@ -169,7 +169,7 @@ class Dashboard extends Component{
                 <Nav pageType={'interior'} user_id={this.state.user_id}/>
                     <h2>Your Inner Engineering Dashboard</h2>
                    <RandomQuote/>   
-                   <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                
+                   <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Selfcare &amp; Gratitude</Link>                
                 </header>
                 <main>     
                   <Progress user_id={this.state.user_id} selfcares={this.state.selfcares} gratitudes={this.state.gratitudes} moods={this.state.moods}/>  
