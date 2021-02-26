@@ -35,7 +35,7 @@ class EntryList extends Component{
         filteredResults = filteredResults.filter(result=>
             result.date_modified.includes(selectedDate))         
         };
-            //filter for rating
+        //filter for rating
         if(selectedRating !== 'all' && selectedRating){         
             filteredResults = filteredResults.filter(result=>
             (result.rating).toString().includes(selectedRating.toString())   

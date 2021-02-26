@@ -8,7 +8,7 @@ class ActivityList extends Component{
 
     render(){            
         const user_id=this.props.user_id;
-        console.log(user_id)
+        
         //getting the url for the "See All" button
         let linkURL = '/'
         if(this.props.typePage ==='selfcares'){
@@ -18,8 +18,8 @@ class ActivityList extends Component{
             linkURL = `/past-gratitude/${user_id}`
         }
           
-           let results = this.props.list.slice(0, 3);
-           console.log(results)
+        let results = this.props.list.slice(0, 3);
+        
            //sorting the results by date and returning the three most recent
           // let sortedResults = results;
         //    if(results[0].date_modified){
@@ -36,14 +36,16 @@ class ActivityList extends Component{
                             <li >{this.props.listHeading}</li>                             
             
                          
-                           {results.map((entry,i)=> 
+                           {
+                           results.map((entry,i)=> 
                                <li key={i} className="recent-activities-item">
                                    <span>{entry.content}</span>
                                    <span>{entry.date_formatted}</span>
-                           </li>)}                
+                           </li>)
+                           }                
                        </ul>
                </section>
-           )
+           );
        }
    }
    

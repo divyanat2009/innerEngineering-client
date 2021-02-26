@@ -17,17 +17,18 @@ class Dashboard extends Component{
     this.state = {
         user_id:"",
         selfcares:[],
-        gratitudes:[]
+        gratitudes:[],
+        moods:[]
     };
   }
     componentDidMount() {      
-      const user_id = this.props.match.params.id;
-      console.log(user_id)
+      const user_id = this.props.match.params.id;      
       this.context.setUserId(user_id);        
       this.setState({
         user_id : user_id
       });
 
+     //getting gratitudes
       fetch(`${config.API_ENDPOINT}api/gratitudes/${user_id}`,{
         method:'GET',
         headers:{
@@ -36,8 +37,7 @@ class Dashboard extends Component{
         },    
       })
       
-      .then(res=>{
-        console.log("fetching gratitudes")
+      .then(res=>{        
         if(!res.ok){
           throw new Error('Something went wrong, please try again later');
         }
@@ -59,7 +59,7 @@ class Dashboard extends Component{
         });
       })
 
-      //getting selfcares
+  //getting selfcares
   fetch(`${config.API_ENDPOINT}api/selfcares/${user_id}`,{
     method:'GET',
     headers:{
@@ -73,8 +73,7 @@ class Dashboard extends Component{
     }
     return res.json();
   })
-  .then(data=>{    
-    console.log(data)
+  .then(data=>{        
    let formatedDateData = data.map(obj=>FormatDate(obj));
 
     this.setState({      
@@ -134,6 +133,7 @@ class Dashboard extends Component{
       error: err.message
     });
   })//end of fetch for goals
+
  //getting moods
   fetch(`${config.API_ENDPOINT}api/moods/${user_id}`,{
     method:'GET',
@@ -160,10 +160,9 @@ class Dashboard extends Component{
     });
   })
 
-    } 
+} 
     
-    render(){
-      console.log(this.state.selfcares)
+    render(){      
         return(
             <div className="dashboard">
                 <header>
@@ -173,10 +172,10 @@ class Dashboard extends Component{
                    <Link className="button-link block-link" to={`/daily-form/${this.state.user_id}`}>Today's Wellbeing &amp; Gratitude</Link>                
                 </header>
                 <main>     
-                  <Progress user_id={this.state.user_id} selfcares={this.state.selfcares} gratitudes={this.state.gratitudes}/>  
+                  <Progress user_id={this.state.user_id} selfcares={this.state.selfcares} gratitudes={this.state.gratitudes} moods={this.state.moods}/>  
                   <ButtonRow
                      links ={
-                        [{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
+                        [{[`/past-care/${this.state.user_id}`]:'Your Past Selfcares'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
                         }
                       />
                 </main>

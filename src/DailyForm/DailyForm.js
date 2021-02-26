@@ -231,7 +231,7 @@ handleSubmit = e =>{
        })
       }//end if newMood
       
-  //this.props.history.push(`/dashboard/${this.state.user_id}`);
+  this.props.history.push(`/dashboard/${this.state.user_id}`);
 }//end of handleSubmit
 
 handleClickCancel = () => {

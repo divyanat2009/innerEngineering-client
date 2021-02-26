@@ -9,8 +9,7 @@ class MostRecent extends Component{
      
     render(){    
         const user_id=this.props.user_id;  
-        console.log(user_id)  
-        console.log(this.props.selfcares)
+        
         return(
             
             <section className="most-recent">                

@@ -61,7 +61,7 @@ class PastCare extends Component{
                     <EntryList typeOfResults = {'selfcares'} results={this.state.selfcares}/> 
                     <ButtonRow
                         links ={
-                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Today\'s Wellbeing & Gratitude'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
+                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Today\'s Selfcare & Gratitude'},{[`/past-gratitude/${this.state.user_id}`]:'Your Past Gratitudes'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
                                }
                     />                       
                 </main>

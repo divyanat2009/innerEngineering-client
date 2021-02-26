@@ -11,8 +11,8 @@ class VisualData extends Component{
       console.log(user_id)
         return(
             <section className="visual-data">     
-               <Chart user_id={user_id}/>                             
-               <ChartLine user_id={user_id}/>
+               <Chart user_id={user_id} selfcares={this.props.selfcares}/>                             
+               <ChartLine user_id={user_id} moods={this.props.moods}/>
             </section>
         )
     }

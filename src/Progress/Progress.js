@@ -12,7 +12,7 @@ class Progress extends Component{
         return(
             <section className="progress">
                <MostRecent user_id={user_id} selfcares={this.props.selfcares} gratitudes={this.props.gratitudes}/>
-               <VisualData user_id={user_id}/>
+               <VisualData user_id={user_id} selfcares={this.props.selfcares} moods={this.props.moods}/>
             </section>
         )
     }

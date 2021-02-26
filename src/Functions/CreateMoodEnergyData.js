@@ -21,7 +21,7 @@ export const CreateMoodEnergyData = (data) =>{
     
      let lineData = [
          {"id": "mood",
-          "color": "hsl(56, 70%, 50%)",
+          "color": "hsl(82, 39%, 39%)",
           "data":monthMoodData
          },      
           { "id": "energy-level",

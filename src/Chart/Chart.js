@@ -11,7 +11,7 @@ static contextType = IEContext;
     render() {
         const user_id=this.props.user_id;
         console.log(user_id)
-        let array = this.context.selfcares;
+        let array = this.props.selfcares;
         let progressArray=[];
         if(array!==0)
         { progressArray = CreateProgressArray(array);

@@ -8,23 +8,31 @@ class ChartLine extends Component {
     static contextType = IEContext;
 
     render() {
-        let array = this.context.moods;
+        let array = this.props.moods;
         let lineData=data;
         let moodEnergyData=[];
-        if(array[0].date_formatted)
-        { moodEnergyData = CreateMoodEnergyData(array);
+        //if(array[0].date_formatted)
+        //{
+            moodEnergyData = CreateMoodEnergyData(array);
             lineData = moodEnergyData;
-        }
+        //}
     return (
     <div className="chart chart-line">
     <ResponsiveLine
         data={lineData}
-        margin={{ top: 30, right: 30, bottom: 90, left: 60 }}
-        xScale={{ type: 'point'}}
-        yScale={{ type: 'linear', min: '0', max: '5', stacked: false, reverse: false }}
+        margin={
+            { top: 30, right: 30, bottom: 90, left: 60 }
+        }
+        xScale={
+            { type: 'point'}
+        }
+        yScale={
+            { type: 'linear', min: '0', max: '5', stacked: false, reverse: false }
+        }
         axisTop={null}
         axisRight={null}
-        axisBottom={{
+        axisBottom={
+            {
             orient: 'bottom',
             tickSize: 5,
             tickPadding: 5,
@@ -32,8 +40,10 @@ class ChartLine extends Component {
             legend: 'day',
             legendOffset: 36,
             legendPosition: 'middle'
-        }}
-        axisLeft={{
+            }
+        }
+        axisLeft={
+            {
             orient: 'left',
             tickSize: 5,
             tickPadding: 5,
@@ -41,10 +51,15 @@ class ChartLine extends Component {
             legend: 'your rating',
             legendOffset: -40,
             legendPosition: 'middle'
-        }}
-        colors={{ scheme: 'purpleRed_green' }}
+            }
+        }
+        colors={
+            { scheme: 'purpleRed_green' }
+        }
         pointSize={2}
-        pointColor={{ theme: 'background' }}
+        pointColor={
+            { theme: 'background' }
+        }
         pointBorderWidth={2}
         pointBorderColor={{ from: 'serieColor' }}
         pointLabel="y"

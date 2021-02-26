@@ -66,7 +66,7 @@ class PastGratitude extends Component{
                     <EntryList typeOfResults = {'gratitudes'} results={this.state.gratitudes} />    
                     <ButtonRow
                         links ={
-                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Daily Form'},{[`/past-care/${this.state.user_id}`]:'Your Past Wellbeing'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
+                               [{[`/dashboard/${this.state.user_id}`]:'Your Dashboard'},{[`/daily-form/${this.state.user_id}`]:'Daily Form'},{[`/past-care/${this.state.user_id}`]:'Your Past Selfcare'},{[`/goal-form/${this.state.user_id}`]:'Set Your Goals'}]
                                }
                     />               
                 </main>

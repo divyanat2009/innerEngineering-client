@@ -40,7 +40,7 @@ makeNavVisible=()=>{
                 <ul>
                     <li><NavLink to={`/dashboard/${user_id}`}>Dashboard</NavLink></li>                    
                     <li><NavLink to={`/daily-form/${user_id}`}>Daily Form</NavLink></li>
-                    <li><NavLink to={`/past-care/${user_id}`}>Past Wellbeing</NavLink></li>
+                    <li><NavLink to={`/past-care/${user_id}`}>Past Selfcare</NavLink></li>
                     <li><NavLink to={`/past-gratitude/${user_id}`}>Past Gratitude</NavLink></li>                    
                     <li><NavLink to={`/goal-form/${user_id}`}>Goals</NavLink></li>
                     <li><NavLink to={`/`}>LogOut</NavLink></li>

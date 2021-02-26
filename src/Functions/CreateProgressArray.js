@@ -10,11 +10,11 @@ export const CreateProgressArray = (data) =>{
     let currentMonth = date.toString().slice(4,8) ;
     let monthResults=[];
 
-    if(data[0].date_formatted)
-    {
+   // if(data[0].date_formatted)
+    //{
       monthResults = data.filter(care=>
           care.date_formatted.slice(0,4).includes(currentMonth)) 
-     }     
+     //}     
     
     monthResults.forEach(obj=>{
         if(obj.type==="energy"){
