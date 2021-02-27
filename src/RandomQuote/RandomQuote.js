@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IEContext from '../IEContext.js'
+import IEContext from '../IEContext.js';
 
 
 class RandomQuote extends Component{

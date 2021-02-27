@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 describe(`MostRecent component`, () => {
-  const user_id=8
+  const user_id=8;
   const gratitudes = [{
     "gratitude_id":"1",
     "user_id":"1",
