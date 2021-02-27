@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 
 describe(`Progress component`, () => {
-    const user_id=8
+    const user_id=8;
     const moods=[{
       "id":"1",
       "user_id":"1",
@@ -66,5 +66,4 @@ describe(`Progress component`, () => {
         ReactDOM.render(<Router><Progress user_id={user_id} selfcares={selfcares} gratitudes={gratitudes} moods={moods} list={gratitudes}/></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });
-
 })

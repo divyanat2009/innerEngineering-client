@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 describe(`Nav component`, () => {
 
-    const pageType='interior'
+    const pageType='interior';
     
     it('renders without crashing', () => {
         const div = document.createElement('div');

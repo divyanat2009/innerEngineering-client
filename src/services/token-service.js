@@ -1,4 +1,4 @@
-import config, { TOKEN_KEY } from '../config';
+import config from '../config';
 
 const TokenService = {
   saveAuthToken(token) {

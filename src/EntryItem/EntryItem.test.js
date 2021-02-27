@@ -28,8 +28,8 @@ describe(`EntryItem component`, () => {
             "content":"I kept my cool with the service phone rep",
             "date_modified":"2021-01-14T19:10:27.090Z"           
         }]
-        const typeOfResults = "selfcares"
-        const key=1
+        const typeOfResults = "selfcares";
+        const key=1;
            
         const div = document.createElement('div');
         ReactDOM.render(<Router><EntryItem entry={entry} typeOfResults = {typeOfResults} key={key}/></Router>, div);

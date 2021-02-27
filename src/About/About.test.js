@@ -4,6 +4,7 @@ import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import About from './About';
 
+
 describe(`About component`, () => {
     it('renders without crashing', () => {
         const div = document.createElement('div');

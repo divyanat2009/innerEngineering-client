@@ -15,12 +15,12 @@ class PastGratitude extends Component{
         gratitudes:[]   
     };
     componentDidMount() {      
-        const user_id = this.props.user_id;
-        //this.context.setUserId(user_id);
-        console.log(user_id)
+        const user_id = this.props.match.params.id;
+        this.context.setUserId(user_id);        
         this.setState({
           user_id : user_id
-        })
+        });
+
         fetch(`${config.API_ENDPOINT}api/gratitudes/${user_id}`,{
             method:'GET',
             headers:{
@@ -29,15 +29,13 @@ class PastGratitude extends Component{
             },    
           })
           
-          .then(res=>{
-            console.log("fetching gratitudes")
+          .then(res=>{        
             if(!res.ok){
               throw new Error('Something went wrong, please try again later');
             }
             return res.json();
           })
-          .then(data=>{
-            
+          .then(data=>{            
             let formatedDateData = data.map(obj=>FormatDate(obj));
             this.setState({
               gratitude_most_recent:formatedDateData,
@@ -60,8 +58,7 @@ class PastGratitude extends Component{
                 <Nav pageType={'interior'} user_id={this.state.user_id}/>
                     <h2>Your Gratitude Entries</h2>
                 </header>
-                <main>
-    
+                <main>    
                     <FilterSortRow  filterOptions = {'date-only'}  pageType={'gratitudes'}/>
                     <EntryList typeOfResults = {'gratitudes'} results={this.state.gratitudes} />    
                     <ButtonRow

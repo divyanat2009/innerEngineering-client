@@ -7,15 +7,14 @@ class Nav extends Component{
     static contextType= IEContext;
     state = {
         isNavHidden:true,
-        user_id:""
-        
-};
+        user_id:""        
+    };
 componentDidMount() {      
     const user_id=this.props.user_id;
     this.context.setUserId(user_id);    
     this.setState({
       user_id : user_id
-    })
+    });
   } 
 
 makeNavVisible=()=>{

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import IEContext from '../IEContext'
+import IEContext from '../IEContext';
 
 class PaginationButtons extends Component{
     static contextType = IEContext;

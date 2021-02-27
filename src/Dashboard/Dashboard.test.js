@@ -8,11 +8,11 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 describe(`Dashboard component`, () => {
   beforeEach(()=>{
     window.history.pushState({}, 'Dashboard', '/dashboard/8');
-
-  })
+  });
 
     it('renders without crashing', () => {
-      const user_id=8
+      const user_id=8;
+      const match = { params: {id : 8 } };
       const moods=[{
         "id":"1",
         "user_id":"1",
@@ -71,7 +71,7 @@ describe(`Dashboard component`, () => {
       "rating":"5",
     }]
         const div = document.createElement('div');
-        ReactDOM.render(<Router><Dashboard user_id={user_id } gratitudes={gratitudes} selfcares={selfcares} moods={moods} quotes={quotes}/></Router>, div);
+        ReactDOM.render(<Router><Dashboard match={match} user_id={user_id } gratitudes={gratitudes} selfcares={selfcares} moods={moods} quotes={quotes}/></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });
 })

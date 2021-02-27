@@ -14,7 +14,7 @@ import config from './config.js';
 //import { FormatDate } from './Functions/FormatDate';
 import UserSignUp from './UserSignUp/UserSignUp';
 import UserSignIn from './UserSignIn/UserSignIn';
-import TokenService from './services/token-service';
+//import TokenService from './services/token-service';
 
 
 class App extends Component{

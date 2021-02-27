@@ -13,18 +13,13 @@ class EntryList extends Component{
     render(){
         let {typeOfResults} = this.props;
        // let results = this.context[typeOfResults];
-       let results= this.props.results
+       let results= this.props.results;
         let page = this.context.current_display[typeOfResults].page;
         let selectedType = this.context.current_display[typeOfResults].type;
         let selectedDate = this.context.current_display[typeOfResults].date_to;
-        let selectedRating = this.context.current_display[typeOfResults].rating;
-        //let sortedResults = results;
+        let selectedRating = this.context.current_display[typeOfResults].rating;        
         let filteredResults = results;
-        // if(results[0].date_modified){
-        //     sortedResults = results.sort((a,b)=>
-        //         b.date_modified > a.date_modified ? 1 : b.date_modified < a.date_modified ? -1 : 0
-        //     );
-        // }           
+               
        //filters for type selected
         if(selectedType !== 'all' && selectedType){         
             filteredResults = filteredResults.filter(result=>

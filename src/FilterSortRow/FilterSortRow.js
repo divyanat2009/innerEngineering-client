@@ -14,14 +14,14 @@ updateDate=(date)=>{
     this.setState(
         {search_date:date}
     );
-}
+};
 
 updateType=(typeSelected)=>{
   this.context.updateTypeSelected(this.props.pageType, typeSelected);
-}
+};
 updateRating=(ratingSelected)=>{
   this.context.updateRatingSelected(this.props.pageType, ratingSelected);
-}
+};
 
 handleSubmitDate=(e)=>{
     e.preventDefault()

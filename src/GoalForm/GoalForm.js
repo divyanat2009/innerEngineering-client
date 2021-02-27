@@ -34,11 +34,11 @@ class GoalForm extends Component{
       }
   }
   componentDidMount() {      
-    const user_id = this.props.user_id;
-    //this.context.setUserId(user_id);    
+    const user_id = this.props.match.params.id;
+    this.context.setUserId(user_id);    
     this.setState({
       user_id : user_id
-    })
+    });
   } 
  
   updateCare=(number, inputId)=>{
@@ -46,32 +46,32 @@ class GoalForm extends Component{
      {
         this.setState({
             emotional:{value:number , touched: true}
-        })
+        });
     };
      if(inputId==='physical')
      {
         this.setState({
             physical:{value:number , touched: true}
-        })
+        });
     };
      if(inputId==='energy')
      {
         this.setState({
             energy:{value:number , touched: true}
-        })
+        });
     };
      if(inputId==='spiritual')
      {
         this.setState({
             spiritual:{value:number , touched: true}
-        })
+        });
     };
  }
  
  handleSubmit=(e)=>{
    e.preventDefault();
    const { emotional, physical, spiritual, energy } = this.state;
-   const user_id= this.props.match.params.id
+   const user_id= this.props.match.params.id;
    const goals = {
          "emotional": emotional.value,
          "spiritual":spiritual.value,
@@ -103,7 +103,7 @@ class GoalForm extends Component{
    })
    .catch(error => {
      this.setState({ error })
-   })
+   });
  }
  handleClickCancel = () => {
      this.props.history.push(`/dashboard/${this.state.user_id}`)

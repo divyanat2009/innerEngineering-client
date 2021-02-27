@@ -8,8 +8,9 @@ import { BrowserRouter as Router, Link } from 'react-router-dom';
 describe(`PastCare component`, () => {
     
     it('renders without crashing', () => {
+      const match = { params: {id : 8 } }
         const div = document.createElement('div');
-        ReactDOM.render(<Router><PastCare /></Router>, div);
+        ReactDOM.render(<Router><PastCare match={match}/></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });
 

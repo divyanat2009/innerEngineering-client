@@ -6,7 +6,7 @@ import PastGratitude from './PastGratitude';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 describe(`PastGratitude component`, () => {
-  const user_id=8
+  const user_id=8;
   const gratitudes = [{
     "gratitude_id":"1",
     "user_id":"1",
@@ -29,11 +29,11 @@ describe(`PastGratitude component`, () => {
 }]
   beforeEach(()=>{
     window.history.pushState({}, 'Past Gratitude', '/past-gratitude/8');
-
   })
-    it('renders without crashing', () => {
+  it('renders without crashing', () => {
+        const match = { params: {id : 8 } };
         const div = document.createElement('div');
-        ReactDOM.render(<Router><PastGratitude user_id={user_id} gratitudes={gratitudes}/></Router>, div);
+        ReactDOM.render(<Router><PastGratitude match={match} user_id={user_id} gratitudes={gratitudes}/></Router>, div);
         ReactDOM.unmountComponentAtNode(div);
       });   
 })

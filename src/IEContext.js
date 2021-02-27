@@ -49,13 +49,22 @@ const IEContext = React.createContext({
         "spiritual":"7",
         "physical":"5",
         "energy":"7"
-    },
-     
-      quotes:{
+    },     
+      quotes:[{
         "id":"1",
         "content":"The grass isn't greener on the other side of the fence, the grass is greener where you water it",
         "author": "anonymous",
      },
+     {
+      "id":"1",
+      "content":"The grass isn't greener on the other side of the fence, the grass is greener where you water it",
+      "author": "anonymous",
+   },
+   {
+    "id":"1",
+    "content":"The grass isn't greener on the other side of the fence, the grass is greener where you water it",
+    "author": "anonymous",
+ }],
       moods:{
         "id":"1",
         "user_id":"1",

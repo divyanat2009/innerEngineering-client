@@ -13,7 +13,7 @@ export const CreateProgressArray = (data) =>{
    // if(data[0].date_formatted)
     //{
       monthResults = data.filter(care=>
-          care.date_formatted.slice(0,4).includes(currentMonth)) 
+          care.date_formatted.slice(0,4).includes(currentMonth)); 
      //}     
     
     monthResults.forEach(obj=>{

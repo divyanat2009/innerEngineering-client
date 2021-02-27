@@ -15,12 +15,12 @@ class PastCare extends Component{
         selfcares:[] 
     }
     componentDidMount() {      
-        const user_id = this.props.user_id;
-        //this.context.setUserId(user_id);
-        console.log(user_id)
+        const user_id = this.props.match.params.id;
+        this.context.setUserId(user_id);        
         this.setState({
           user_id : user_id
-        })
+        });
+
         fetch(`${config.API_ENDPOINT}api/selfcares/${user_id}`,{
             method:'GET',
             headers:{
@@ -34,8 +34,7 @@ class PastCare extends Component{
             }
             return res.json();
           })
-          .then(data=>{    
-            console.log(data)
+          .then(data=>{              
            let formatedDateData = data.map(obj=>FormatDate(obj));
         
             this.setState({      
@@ -47,7 +46,6 @@ class PastCare extends Component{
               error: err.message
             });
           })  
-
       }
     render(){
         return(
