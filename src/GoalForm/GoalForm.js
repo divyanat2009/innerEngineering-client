@@ -114,7 +114,7 @@ class GoalForm extends Component{
       return(
         <div className="goalform">
             <header>
-               <Nav pageType={'interior'} user={this.state.user_id}/>
+               <Nav pageType={'interior'} user_id={this.state.user_id}/>
                   <h2>Your Goals</h2>
             </header>
             <main>

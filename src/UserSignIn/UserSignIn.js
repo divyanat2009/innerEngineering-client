@@ -46,8 +46,10 @@ class UserSignIn extends Component {
                     </div>
                     <div className="form-field-group">
                         <label htmlFor="password">Password</label>
-                        <input placeholder="*******" type="password" name='password' id='password' autoComplete="new-password" required/>
+                        <input placeholder="*******" type="password" name='password' id='password' autoComplete="new-password" required                        
+                        />
                     </div>
+                    {this.state.error && <p>Incorrect Password!</p>}
                     <div className="form-field-group">
                     <p>Demo Credentials:<br></br>
                       username:jondoe1<br></br>
