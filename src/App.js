@@ -11,10 +11,9 @@ import Footer from './Footer/Footer.js';
 import IEContext from './IEContext.js';
 import data from './data.js';
 import config from './config.js';
-//import { FormatDate } from './Functions/FormatDate';
 import UserSignUp from './UserSignUp/UserSignUp';
 import UserSignIn from './UserSignIn/UserSignIn';
-//import TokenService from './services/token-service';
+
 
 
 class App extends Component{
@@ -72,8 +71,7 @@ updateDateSelected=(typeOfPage, date)=>{
   current_display[typeOfPage].date_to = date;
   this.setState(
     {current_display:current_display}
-  );
-  console.log(current_display)
+  );  
 }
 
 updateRatingSelected=(typeOfPage, ratingSelected)=>{
@@ -112,7 +110,6 @@ setUserId=(id)=>{
     user_id:id
   });  
 }
-
 
 componentDidMount(){      
   this.setState({

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
-import IEContext from '../IEContext'
-import EntryItem from '../EntryItem/EntryItem.js'
-import '../_styles/EntryList.css'
+import IEContext from '../IEContext';
+import EntryItem from '../EntryItem/EntryItem.js';
+import '../_styles/EntryList.css';
 
 
 class EntryList extends Component{
@@ -23,12 +23,12 @@ class EntryList extends Component{
        //filters for type selected
         if(selectedType !== 'all' && selectedType){         
             filteredResults = filteredResults.filter(result=>
-                result.type.includes(selectedType))         
+                result.type.includes(selectedType));         
         };
         //filter for date
         if(selectedDate !== 'all' && selectedDate){         
         filteredResults = filteredResults.filter(result=>
-            result.date_modified.includes(selectedDate))         
+            result.date_modified.includes(selectedDate));         
         };
         //filter for rating
         if(selectedRating !== 'all' && selectedRating){         

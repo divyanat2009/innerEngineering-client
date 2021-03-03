@@ -184,7 +184,7 @@ handleSubmit = e =>{
         };          
     }
     if(newMoods){    
-      setTimeout(2000, ()=>{  
+      setTimeout(()=>{  
        fetch(`${config.API_ENDPOINT}api/moods/`+user_id,{
           method: 'POST',
           body: JSON.stringify(newMoods),
@@ -211,7 +211,7 @@ handleSubmit = e =>{
         .catch(error => {
           this.setState({ error });
         });
-       })
+       },2000)
       }//end if newMood
       
     this.props.history.push(`/dashboard/${this.state.user_id}`);

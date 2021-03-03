@@ -34,7 +34,6 @@ Users can create a user and login to view all daily selfcare and gratitude, set 
 ## Demo
 ### Demo Credentials:
 username: jondoe1; password: Passw0rd!
-## Demo
 
 ### Landing Page
 ![LandingPage](https://user-images.githubusercontent.com/69719463/107443259-1dda1100-6afe-11eb-8a99-c741c3a176e1.png)
@@ -58,6 +57,7 @@ username: jondoe1; password: Passw0rd!
 ## `npm test`
 Launches the test runner in the interactive watch mode.\
 npm run test
+![Screenshot (924)](https://user-images.githubusercontent.com/69719463/109839851-25786b80-7c0d-11eb-87da-069ee68f61ab.png)
 
 ## Built with
 React, HTML, CSS, Javascript

@@ -8,14 +8,13 @@ class ChartLine extends Component {
     static contextType = IEContext;
 
     render() {
-        let array = this.props.moods;
-        let lineData=data;
-        let moodEnergyData=[];
-        //if(array[0].date_formatted)
-        //{
+        let array = this.props.moods;         
+        let lineData=data;        
+        let moodEnergyData=[];      
             moodEnergyData = CreateMoodEnergyData(array);
             lineData = moodEnergyData;
-        //}
+            console.log(moodEnergyData)
+        
     return (
     <div className="chart chart-line">
     <ResponsiveLine

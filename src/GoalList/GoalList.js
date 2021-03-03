@@ -24,7 +24,7 @@ class GoalList extends Component{
                 <main>
                     <ul className="goal-list">
                         <li className="goal-item">
-                            <span>Type of <br/>Wellbeing</span>
+                            <span>Type of <br/>Selfcare</span>
                             <span>Number of times (per week)</span>
                         </li>
                         {

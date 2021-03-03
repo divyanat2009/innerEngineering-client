@@ -5,16 +5,13 @@ export const CreateProgressArray = (data) =>{
     let progressSpiritual = 0;
 
     let date = new Date();
-
-    //let allSelfCares = this.context.selfcares;
+    
     let currentMonth = date.toString().slice(4,8) ;
     let monthResults=[];
-
-   // if(data[0].date_formatted)
-    //{
+   
       monthResults = data.filter(care=>
-          care.date_formatted.slice(0,4).includes(currentMonth)); 
-     //}     
+         care.date_formatted.slice(0,4).includes(currentMonth)); 
+        
     
     monthResults.forEach(obj=>{
         if(obj.type==="energy"){
