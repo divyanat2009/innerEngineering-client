@@ -11,9 +11,8 @@ class ChartLine extends Component {
         let array = this.props.moods;         
         let lineData=data;        
         let moodEnergyData=[];      
-            moodEnergyData = CreateMoodEnergyData(array);
-            lineData = moodEnergyData;
-            console.log(moodEnergyData)
+        moodEnergyData = CreateMoodEnergyData(array);
+        lineData = moodEnergyData;            
         
     return (
     <div className="chart chart-line">
